@@ -18,16 +18,18 @@ public class Assignment_2 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        login loginPage = new login();
-        loginPage.show();
-        loginClass albert = new loginClass("Albert","Pinto","Doctor");
-        users.put(albert.getUsername(), albert);
-        loginClass jagruti = new loginClass("Jagruti","Agrawal","System Admin");
-        users.put(jagruti.getUsername(), jagruti);
-        loginClass krishnna = new loginClass("Krishnna","Sarrdah","Community Admin");
-        users.put(krishnna.getUsername(), krishnna);
-        loginClass sarvesh = new loginClass("Sarvesh","Malpani","Patient");
-        users.put(sarvesh.getUsername(), sarvesh);
+//        login loginPage = new login();
+//        loginPage.show();
+//        loginClass albert = new loginClass("Albert","Pinto","Doctor");
+//        users.put(albert.getUsername(), albert);
+//        loginClass jagruti = new loginClass("Jagruti","Agrawal","System Admin");
+//        users.put(jagruti.getUsername(), jagruti);
+//        loginClass krishnna = new loginClass("Krishnna","Sarrdah","Community Admin");
+//        users.put(krishnna.getUsername(), krishnna);
+//        loginClass sarvesh = new loginClass("Sarvesh","Malpani","Patient");
+//        users.put(sarvesh.getUsername(), sarvesh);
+          PeopleClass com = new PeopleClass("Jagruti",22,"Female","609","Jagruti","Jvue",02120,"Boston");
+          System.out.println(com.getGender());
     }
     
 }
