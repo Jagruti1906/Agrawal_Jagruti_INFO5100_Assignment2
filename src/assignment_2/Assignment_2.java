@@ -5,29 +5,29 @@
 package assignment_2;
 
 import java.util.HashMap;
+import views.login;
 
 /**
  *
  * @author jagru
  */
 public class Assignment_2 {
-
+    static public HashMap <String, loginClass> users = new HashMap <String, loginClass>();
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
-         HashMap <String, login> users = new HashMap <String, login>();
-        
-        login albert = new login("Albert","Pinto","Doctor");
+        login loginPage = new login();
+        loginPage.show();
+        loginClass albert = new loginClass("Albert","Pinto","Doctor");
         users.put(albert.getUsername(), albert);
-        login jagruti = new login("Jagruti","Agrawal","System Admin");
+        loginClass jagruti = new loginClass("Jagruti","Agrawal","System Admin");
         users.put(jagruti.getUsername(), jagruti);
-        login krishnna = new login("Krishnna","Sarrdah","Community Admin");
+        loginClass krishnna = new loginClass("Krishnna","Sarrdah","Community Admin");
         users.put(krishnna.getUsername(), krishnna);
-        login sarvesh = new login("Sarvesh","Malpani","Patient");
+        loginClass sarvesh = new loginClass("Sarvesh","Malpani","Patient");
         users.put(sarvesh.getUsername(), sarvesh);
-        System.out.print(users.size());
     }
     
 }

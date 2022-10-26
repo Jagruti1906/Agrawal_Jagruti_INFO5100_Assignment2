@@ -8,12 +8,12 @@ package assignment_2;
  *
  * @author jagru
  */
-public class login {
+public class loginClass {
     private String username;
     private String password;
     private String type;
     
-    login(String username, String password, String type) {
+    loginClass(String username, String password, String type) {
         this.username = username;
         this.password = password;
         this.type = type;
