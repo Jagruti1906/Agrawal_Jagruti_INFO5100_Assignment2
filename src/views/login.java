@@ -74,8 +74,6 @@ public class login extends javax.swing.JFrame {
         String userName = username.getText();
         String passWord = password.getText();
         boolean temp = users.get(userName).getPassword().equals(passWord);
-        System.out.println(users.get(userName).getPassword());
-        System.out.println(passWord);
         if(users.containsKey(userName) && temp) {
             JOptionPane.showMessageDialog(this, "Successfully Logged In.");
             if(users.get(userName).getType().equals("System Admin")) {
@@ -83,9 +81,24 @@ public class login extends javax.swing.JFrame {
                 system_admin system = new system_admin();
                 system.show();
             }
+//            else if(users.get(userName).getType().equals("Doctor")) {
+//                this.hide();
+//                system_admin system = new system_admin();
+//                system.show();
+//            }
+            else if(users.get(userName).getType().equals("Community Admin")) {
+                this.hide();
+                system_admin system = new system_admin();
+                system.show();
+            }
+//            else if(users.get(userName).getType().equals("Patient")) {
+//                this.hide();
+//                system_admin system = new system_admin();
+//                system.show();
+//            }
         }
         else {
-            JOptionPane.showMessageDialog(this, "Incorrect Username.");
+            JOptionPane.showMessageDialog(this, "Incorrect Details.");
         }
     }//GEN-LAST:event_loginActionPerformed
 
