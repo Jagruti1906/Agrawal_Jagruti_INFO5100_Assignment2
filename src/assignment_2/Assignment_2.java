@@ -21,6 +21,7 @@ public class Assignment_2 {
     static public HashMap <String, CommunityAdmin> communityAdmins = new HashMap <String, CommunityAdmin>();
     static public HashMap <String, CommunityClass> community = new HashMap <String, CommunityClass>();
     static public HashMap <String, HospitalClass> hospitals = new HashMap <String, HospitalClass>();
+    static public HashMap <String, HouseClass> houses = new HashMap <String, HouseClass>();
     static public ArrayList<String> cities = new ArrayList<String>();
     /**
      * @param args the command line arguments
@@ -37,6 +38,11 @@ public class Assignment_2 {
         users.put(krishnna.getUsername(), krishnna);
         loginClass sarvesh = new loginClass("Sarvesh","Malpani","Patient");
         users.put(sarvesh.getUsername(), sarvesh);
+        cities.add("Boston");
+        CommunityClass com = new CommunityClass("Jvue", 02120, "Boston");
+        community.put(com.getCommunityName(), com);
+        HospitalClass hos = new HospitalClass("Ruby", "Jvue", 02120, "Boston");
+        hospitals.put(hos.getHospitalName(), hos);
 //        CommunityAdmin com = new CommunityAdmin("Jagruti","Jagruti","Jvue",02120,"Boston");
 //        communityAdmins.put(com.getUsername(), com);
 //        System.out.println(com.getCity());

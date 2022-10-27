@@ -11,6 +11,15 @@ package assignment_2;
 public class CommunityAdmin extends CommunityClass{
     private String username;
     private String name;
+    private String gender;
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
     public String getName() {
         return name;
@@ -28,9 +37,10 @@ public class CommunityAdmin extends CommunityClass{
         this.username = username;
     }
 
-    CommunityAdmin(String username, String name, String CommunityName, int zip, String city) {
-        super(name, zip, city);
+    public CommunityAdmin(String username, String name, String gender, String CommunityName, int zip, String city) {
+        super(CommunityName, zip, city);
         this.setUsername(username);
         this.setName(name);
+        this.setGender(gender);
     }
 }

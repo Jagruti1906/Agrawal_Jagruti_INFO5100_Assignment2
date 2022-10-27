@@ -4,12 +4,15 @@
  */
 package views;
 
+import static assignment_2.Assignment_2.community;
 import static assignment_2.Assignment_2.doctors;
 import static assignment_2.Assignment_2.patients;
 import static assignment_2.Assignment_2.users;
+import assignment_2.CommunityClass;
 import assignment_2.DoctorClass;
 import assignment_2.PatientClass;
 import assignment_2.loginClass;
+import java.util.HashMap;
 
 /**
  *
@@ -70,6 +73,12 @@ public class CreatePatient extends javax.swing.JFrame {
         });
 
         jLabel8.setText("Patient");
+
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("City");
 
@@ -207,6 +216,17 @@ public class CreatePatient extends javax.swing.JFrame {
         UserFrame userFrame = new UserFrame();
         userFrame.show();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+        jComboBox2.removeAllItems();
+        for (HashMap.Entry<String, CommunityClass> set : community.entrySet()) {
+            String cityName = set.getValue().getCity();
+            if(jComboBox1.getSelectedItem().toString().equals(cityName)) {
+                jComboBox2.addItem(set.getValue().getCommunityName());
+            }
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments

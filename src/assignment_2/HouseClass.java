@@ -19,7 +19,7 @@ public class HouseClass extends CommunityClass{
         this.houseName = houseName;
     }
     
-    HouseClass(String name, String houseName, int zip, String city) {
+    public HouseClass(String name, String houseName, int zip, String city) {
         super(name, zip, city);
         this.setHouseName(houseName);
     }

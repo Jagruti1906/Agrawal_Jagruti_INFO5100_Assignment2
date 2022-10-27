@@ -158,6 +158,38 @@ public class ViewForm extends javax.swing.JFrame {
             }
             hos.show();
         }
+        else if(jLabel1.getText() == "Doctor") {
+            this.hide();
+            CreateDoctor doc = new CreateDoctor();
+            for(int i=0;i<cities.size();i++) {
+                doc.jComboBox1.addItem(cities.get(i));
+            }
+            doc.show();
+        }
+        else if(jLabel1.getText() == "Patient") {
+            this.hide();
+            CreatePatient patient = new CreatePatient();
+            for(int i=0;i<cities.size();i++) {
+                patient.jComboBox1.addItem(cities.get(i));
+            }
+            patient.show();
+        }
+        else if(jLabel1.getText() == "Community Admin") {
+            this.hide();
+            CreateCommunityAdmin communityAdmin = new CreateCommunityAdmin();
+            for(int i=0;i<cities.size();i++) {
+                communityAdmin.jComboBox1.addItem(cities.get(i));
+            }
+            communityAdmin.show();
+        }
+        else if(jLabel1.getText() == "House") {
+            this.hide();
+            CreateHouse house = new CreateHouse();
+            for(int i=0;i<cities.size();i++) {
+                house.jComboBox1.addItem(cities.get(i));
+            }
+            house.show();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

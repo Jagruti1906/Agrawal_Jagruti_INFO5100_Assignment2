@@ -5,6 +5,16 @@
 package views;
 
 import static assignment_2.Assignment_2.cities;
+import static assignment_2.Assignment_2.community;
+import static assignment_2.Assignment_2.communityAdmins;
+import static assignment_2.Assignment_2.doctors;
+import static assignment_2.Assignment_2.patients;
+import assignment_2.CommunityAdmin;
+import assignment_2.CommunityClass;
+import assignment_2.DoctorClass;
+import assignment_2.PatientClass;
+import java.util.HashMap;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -35,6 +45,11 @@ public class UserFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("Community Admin");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Doctor");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -92,22 +107,41 @@ public class UserFrame extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         this.hide();
-        CreateDoctor doc = new CreateDoctor();
-        for(int i=0;i<cities.size();i++) {
-            doc.jComboBox1.addItem(cities.get(i));
+        ViewForm view = new ViewForm();
+        view.jLabel1.setText(jButton2.getText());
+        String[] columnNames = {"Name", "Hospital Name", "Community", "City"};
+        String[][] rows = new String[doctors.size()][4];
+        int i=0;
+        for (HashMap.Entry<String, DoctorClass> set : doctors.entrySet()) {
+            rows[i][0] = set.getValue().getName();
+            rows[i][1] = set.getValue().getHospitalName();
+            rows[i][2] = set.getValue().getCommunityName();
+            rows[i][3] = set.getValue().getCity();
+            i++;
         }
-//        doc.jComboBox1.setSelectedItem(null);
-        doc.show();
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        view.jTable1.setModel(model);
+        view.show();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         this.hide();
-        CreatePatient patient = new CreatePatient();
-        for(int i=0;i<cities.size();i++) {
-            patient.jComboBox1.addItem(cities.get(i));
+        ViewForm view = new ViewForm();
+        view.jLabel1.setText(jButton3.getText());
+        String[] columnNames = {"Name", "House", "Community", "City"};
+        String[][] rows = new String[patients.size()][4];
+        int i=0;
+        for (HashMap.Entry<String, PatientClass> set : patients.entrySet()) {
+            rows[i][0] = set.getValue().getName();
+            rows[i][1] = set.getValue().getHouseName();
+            rows[i][2] = set.getValue().getCommunityName();
+            rows[i][3] = set.getValue().getCity();
+            i++;
         }
-        patient.show();
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        view.jTable1.setModel(model);
+        view.show();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -116,6 +150,25 @@ public class UserFrame extends javax.swing.JFrame {
         system_admin system = new system_admin();
         system.show();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+        ViewForm view = new ViewForm();
+        view.jLabel1.setText(jButton1.getText());
+        String[] columnNames = {"Name", "Community", "City"};
+        String[][] rows = new String[communityAdmins.size()][3];
+        int i=0;
+        for (HashMap.Entry<String, CommunityAdmin> set : communityAdmins.entrySet()) {
+            rows[i][0] = set.getValue().getName();
+            rows[i][1] = set.getValue().getCommunityName();
+            rows[i][2] = set.getValue().getCity();
+            i++;
+        }
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        view.jTable1.setModel(model);
+        view.show();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -7,8 +7,10 @@ package views;
 import static assignment_2.Assignment_2.cities;
 import static assignment_2.Assignment_2.community;
 import static assignment_2.Assignment_2.hospitals;
+import static assignment_2.Assignment_2.houses;
 import assignment_2.CommunityClass;
 import assignment_2.HospitalClass;
+import assignment_2.HouseClass;
 import java.util.HashMap;
 import javax.swing.table.DefaultTableModel;
 
@@ -39,6 +41,7 @@ public class system_admin extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,13 +74,27 @@ public class system_admin extends javax.swing.JFrame {
         });
 
         jButton5.setText("Logout");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jButton6.setText("House");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(158, 158, 158)
+                .addGap(53, 53, 53)
+                .addComponent(jButton6)
+                .addGap(30, 30, 30)
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton3)
@@ -85,7 +102,7 @@ public class system_admin extends javax.swing.JFrame {
                 .addComponent(jButton4)
                 .addGap(37, 37, 37)
                 .addComponent(jButton1)
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addContainerGap(148, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton5)
@@ -99,7 +116,8 @@ public class system_admin extends javax.swing.JFrame {
                     .addComponent(jButton3)
                     .addComponent(jButton4)
                     .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1)
+                    .addComponent(jButton6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
                 .addComponent(jButton5)
                 .addGap(60, 60, 60))
@@ -168,6 +186,32 @@ public class system_admin extends javax.swing.JFrame {
         user.show();
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+        login signIn = new login();
+        signIn.show();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+        ViewForm view = new ViewForm();
+        view.jLabel1.setText(jButton6.getText());
+        String[] columnNames = {"House", "Community", "City"};
+        String[][] rows = new String[houses.size()][3];
+        int i=0;
+        for (HashMap.Entry<String, HouseClass> set : houses.entrySet()) {
+            rows[i][0] = set.getValue().getHouseName();
+            rows[i][1] = set.getValue().getCommunityName();
+            rows[i][2] = set.getValue().getCity();
+            i++;
+        }
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        view.jTable1.setModel(model);
+        view.show();
+    }//GEN-LAST:event_jButton6ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -209,5 +253,6 @@ public class system_admin extends javax.swing.JFrame {
     public javax.swing.JButton jButton3;
     public javax.swing.JButton jButton4;
     public javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     // End of variables declaration//GEN-END:variables
 }
