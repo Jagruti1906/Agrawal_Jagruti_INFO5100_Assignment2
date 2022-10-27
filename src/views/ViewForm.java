@@ -4,6 +4,8 @@
  */
 package views;
 
+import static assignment_2.Assignment_2.cities;
+import static assignment_2.Assignment_2.hospitals;
 import assignment_2.CityClass;
 
 /**
@@ -136,6 +138,25 @@ public class ViewForm extends javax.swing.JFrame {
             this.hide();
             CreateCity city = new CreateCity();
             city.show();
+        }
+        else if(jLabel1.getText() == "Community") {
+            this.hide();
+            CreateCommunity com = new CreateCommunity();
+            for(int i=0;i<cities.size();i++) {
+                com.jComboBox1.addItem(cities.get(i));
+            }
+            com.show();
+        }
+        else if(jLabel1.getText() == "Hospitals") {
+            this.hide();
+            CreateHospital hos = new CreateHospital();
+//            for(int i=0;i<hospitals.size();i++) {
+//                hos.jComboBox1.addItem(hospitals.get(i));
+//            }
+            for(int i=0;i<cities.size();i++) {
+                hos.jComboBox1.addItem(cities.get(i));
+            }
+            hos.show();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

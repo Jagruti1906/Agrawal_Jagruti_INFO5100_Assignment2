@@ -8,38 +8,19 @@ package assignment_2;
  *
  * @author jagru
  */
-public class HospitalClass {
-    private String name;
-    private String city;
-    private String community;
+public class HospitalClass extends CommunityClass{
+    private String hospitalName;
+
+    public String getHospitalName() {
+        return hospitalName;
+    }
+
+    public void setHospitalName(String hospitalName) {
+        this.hospitalName = hospitalName;
+    }
     
-    HospitalClass(String name, String city, String community) {
-        this.name = name;
-        this.city = city;
-        this.community = community;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getCommunity() {
-        return community;
-    }
-
-    public void setCommunity(String community) {
-        this.community = community;
+    public HospitalClass(String hospitalName, String name, int zip, String city) {
+        super(name,zip,city);
+        this.setHospitalName(hospitalName);
     }
 }

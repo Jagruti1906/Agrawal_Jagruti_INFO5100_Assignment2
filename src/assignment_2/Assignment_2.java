@@ -6,6 +6,8 @@ package assignment_2;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import views.login;
 
 /**
@@ -17,6 +19,7 @@ public class Assignment_2 {
     static public HashMap <String, DoctorClass> doctors = new HashMap <String, DoctorClass>();
     static public HashMap <String, PatientClass> patients = new HashMap <String, PatientClass>();
     static public HashMap <String, CommunityAdmin> communityAdmins = new HashMap <String, CommunityAdmin>();
+    static public HashMap <String, CommunityClass> community = new HashMap <String, CommunityClass>();
     static public HashMap <String, HospitalClass> hospitals = new HashMap <String, HospitalClass>();
     static public ArrayList<String> cities = new ArrayList<String>();
     /**
@@ -34,8 +37,16 @@ public class Assignment_2 {
         users.put(krishnna.getUsername(), krishnna);
         loginClass sarvesh = new loginClass("Sarvesh","Malpani","Patient");
         users.put(sarvesh.getUsername(), sarvesh);
-//          PeopleClass com = new PeopleClass("Jagruti",22,"Female","Jvue","609",02120,"Boston");
-//          System.out.println(com.getCommunityName());
+//        CommunityAdmin com = new CommunityAdmin("Jagruti","Jagruti","Jvue",02120,"Boston");
+//        communityAdmins.put(com.getUsername(), com);
+//        System.out.println(com.getCity());
+//        Iterator<Map.Entry<String, CommunityAdmin>> it = communityAdmins.entrySet().iterator();
+//        // iterating every set of entry in the HashMap. 
+//        while (it.hasNext()) {
+//                HashMap.Entry<String, CommunityAdmin> set = (HashMap.Entry<String, CommunityAdmin>) it.next();
+//                System.out.println(set.getKey() + " = " + set.getValue());
+//        }
+//          communityAdmins.forEach((key,value) -> System.out.println(key + " = " + value));
     }
     
 }

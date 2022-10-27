@@ -5,6 +5,11 @@
 package views;
 
 import static assignment_2.Assignment_2.cities;
+import static assignment_2.Assignment_2.community;
+import static assignment_2.Assignment_2.hospitals;
+import assignment_2.CommunityClass;
+import assignment_2.HospitalClass;
+import java.util.HashMap;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -108,6 +113,14 @@ public class system_admin extends javax.swing.JFrame {
         this.hide();
         ViewForm view = new ViewForm();
         view.jLabel1.setText(jButton2.getText());
+//        view.jLabel1.setText("City");
+        String[] columnNames = {"Cities"};
+        String[][] rows = new String[cities.size()][1];
+        for(int i=0;i<cities.size();i++) {
+            rows[i][0] = cities.get(i);
+        }
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        view.jTable1.setModel(model);
         view.show();
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -116,6 +129,16 @@ public class system_admin extends javax.swing.JFrame {
         this.hide();
         ViewForm view = new ViewForm();
         view.jLabel1.setText(jButton3.getText());
+        String[] columnNames = {"Community", "City"};
+        String[][] rows = new String[community.size()][2];
+        int i=0;
+        for (HashMap.Entry<String, CommunityClass> set : community.entrySet()) {
+            rows[i][0] = set.getValue().getCommunityName();
+            rows[i][1] = set.getValue().getCity();
+            i++;
+        }
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        view.jTable1.setModel(model);
         view.show();
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -123,12 +146,15 @@ public class system_admin extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.hide();
         ViewForm view = new ViewForm();
-        view.jLabel1.setText("City");
-        String[] columnNames = {"Cities"};
-        String[][] rows = new String[cities.size()][1];
-        for(int i=0;i<cities.size();i++) {
-            rows[i][0] = cities.get(i);
-            System.out.println(rows[i][0]);
+        view.jLabel1.setText(jButton1.getText());
+        String[] columnNames = {"Hospital Name", "Community", "City"};
+        String[][] rows = new String[hospitals.size()][3];
+        int i=0;
+        for (HashMap.Entry<String, HospitalClass> set : hospitals.entrySet()) {
+            rows[i][0] = set.getValue().getHospitalName();
+            rows[i][1] = set.getValue().getCommunityName();
+            rows[i][2] = set.getValue().getCity();
+            i++;
         }
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
         view.jTable1.setModel(model);

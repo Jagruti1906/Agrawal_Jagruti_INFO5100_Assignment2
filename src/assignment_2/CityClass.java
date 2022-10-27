@@ -27,6 +27,5 @@ public class CityClass {
     
     public static void addCity(String city) {
         cities.add(city);
-        System.out.println(cities.size());
     }
 }

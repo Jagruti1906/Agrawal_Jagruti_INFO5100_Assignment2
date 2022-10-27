@@ -4,12 +4,19 @@
  */
 package views;
 
+import static assignment_2.Assignment_2.community;
+import static assignment_2.Assignment_2.communityAdmins;
 import static assignment_2.Assignment_2.doctors;
+import static assignment_2.Assignment_2.hospitals;
 import static assignment_2.Assignment_2.users;
 import assignment_2.CommunityAdmin;
+import assignment_2.CommunityClass;
 import assignment_2.DoctorClass;
+import assignment_2.HospitalClass;
 import assignment_2.loginClass;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
 
 /**
  *
@@ -81,15 +88,24 @@ public class CreateDoctor extends javax.swing.JFrame {
 
         jLabel8.setText("Doctor");
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "City" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
             }
         });
 
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Community" }));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
+            }
+        });
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hospital" }));
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
             }
         });
 
@@ -229,22 +245,37 @@ public class CreateDoctor extends javax.swing.JFrame {
         users.put(user.getUsername(), user);
         DoctorClass doctor = new DoctorClass(jTextField3.getText(),jTextField1.getText(),Integer.parseInt(jTextField2.getText()), jComboBox4.getSelectedItem().toString(), jComboBox3.getSelectedItem().toString(), jComboBox2.getSelectedItem().toString(), jTextField4.getText(), Integer.parseInt(jTextField5.getText()), jComboBox1.getSelectedItem().toString());
         doctors.put(doctor.getUsername(), doctor);
+        UserFrame userFrame = new UserFrame();
+        userFrame.show();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
-        HashMap<String, CommunityAdmin> hash_map = new HashMap<String, CommunityAdmin>();
-        for (HashMap.Entry<String, CommunityAdmin> set : hash_map.entrySet()) {
+        jComboBox2.removeAllItems();
+        for (HashMap.Entry<String, CommunityClass> set : community.entrySet()) {
             String cityName = set.getValue().getCity();
             if(jComboBox1.getSelectedItem().toString().equals(cityName)) {
                 jComboBox2.addItem(set.getValue().getCommunityName());
             }
-        }        
+        }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
+        jComboBox3.removeAllItems();
+        if(jComboBox2.getSelectedItem() != null) {
+            for (HashMap.Entry<String, HospitalClass> set : hospitals.entrySet()) {
+                String comName = set.getValue().getCommunityName();
+                if(jComboBox2.getSelectedItem().toString().equals(comName)) {
+                    jComboBox3.addItem(set.getValue().getHospitalName());
+                }
+            }
+        }
     }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox3ActionPerformed
 
     /**
      * @param args the command line arguments
