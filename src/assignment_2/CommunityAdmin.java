@@ -28,8 +28,8 @@ public class CommunityAdmin extends CommunityClass{
         this.username = username;
     }
 
-    CommunityAdmin(String username, String name, String CommunityName, String address, int zip, String city) {
-        super(name, address, zip, city);
+    CommunityAdmin(String username, String name, String CommunityName, int zip, String city) {
+        super(name, zip, city);
         this.setUsername(username);
         this.setName(name);
     }

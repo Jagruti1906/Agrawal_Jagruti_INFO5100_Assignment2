@@ -4,6 +4,7 @@
  */
 package assignment_2;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import views.login;
 
@@ -13,23 +14,28 @@ import views.login;
  */
 public class Assignment_2 {
     static public HashMap <String, loginClass> users = new HashMap <String, loginClass>();
+    static public HashMap <String, DoctorClass> doctors = new HashMap <String, DoctorClass>();
+    static public HashMap <String, PatientClass> patients = new HashMap <String, PatientClass>();
+    static public HashMap <String, CommunityAdmin> communityAdmins = new HashMap <String, CommunityAdmin>();
+    static public HashMap <String, HospitalClass> hospitals = new HashMap <String, HospitalClass>();
+    static public ArrayList<String> cities = new ArrayList<String>();
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
-//        login loginPage = new login();
-//        loginPage.show();
-//        loginClass albert = new loginClass("Albert","Pinto","Doctor");
-//        users.put(albert.getUsername(), albert);
-//        loginClass jagruti = new loginClass("Jagruti","Agrawal","System Admin");
-//        users.put(jagruti.getUsername(), jagruti);
-//        loginClass krishnna = new loginClass("Krishnna","Sarrdah","Community Admin");
-//        users.put(krishnna.getUsername(), krishnna);
-//        loginClass sarvesh = new loginClass("Sarvesh","Malpani","Patient");
-//        users.put(sarvesh.getUsername(), sarvesh);
-          PeopleClass com = new PeopleClass("Jagruti",22,"Female","609","Jagruti","Jvue",02120,"Boston");
-          System.out.println(com.getGender());
+        login loginPage = new login();
+        loginPage.show();
+        loginClass albert = new loginClass("Albert","Pinto","Doctor");
+        users.put(albert.getUsername(), albert);
+        loginClass jagruti = new loginClass("Jagruti","Agrawal","System Admin");
+        users.put(jagruti.getUsername(), jagruti);
+        loginClass krishnna = new loginClass("Krishnna","Sarrdah","Community Admin");
+        users.put(krishnna.getUsername(), krishnna);
+        loginClass sarvesh = new loginClass("Sarvesh","Malpani","Patient");
+        users.put(sarvesh.getUsername(), sarvesh);
+//          PeopleClass com = new PeopleClass("Jagruti",22,"Female","Jvue","609",02120,"Boston");
+//          System.out.println(com.getCommunityName());
     }
     
 }

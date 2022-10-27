@@ -10,31 +10,21 @@ package assignment_2;
  */
 public class CommunityClass extends CityClass {
     
-    private String name;
-    private String address;
+    private String CommunityName;
     private int zip;
     
-    CommunityClass(String name, String address, int zip, String city) {
+    CommunityClass(String name, int zip, String city) {
         super(city);
-        this.setName(name);
-        this.setAddress(address);
+        this.setCommunityName(name);
         this.setZip(zip);
     }
 
-    public String getName() {
-        return name;
+    public String getCommunityName() {
+        return CommunityName;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    public void setCommunityName(String name) {
+        this.CommunityName = name;
     }
 
     public int getZip() {

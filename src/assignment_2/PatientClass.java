@@ -19,8 +19,8 @@ public class PatientClass extends PeopleClass{
         this.username = username;
     }
     
-    PatientClass(String username, String name, int age, String gender, String communityName, String houseName, String address, int zip, String city) {
-        super(name, age, gender, communityName, houseName, address, zip, city);
+    public PatientClass(String username, String name, int age, String gender, String communityName, String houseName, int zip, String city) {
+        super(name, age, gender, communityName, houseName, zip, city);
         this.setUsername(username);
     }
 }

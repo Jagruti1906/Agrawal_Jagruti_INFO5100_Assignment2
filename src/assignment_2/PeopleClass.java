@@ -37,8 +37,8 @@ public class PeopleClass extends HouseClass{
         this.gender = gender;
     }
     
-    PeopleClass(String name, int age, String gender, String communityName, String houseName, String address, int zip, String city) {
-        super(communityName, houseName, address, zip, city);
+    PeopleClass(String name, int age, String gender, String communityName, String houseName, int zip, String city) {
+        super(communityName, houseName, zip, city);
         this.setName(name);
         this.setAge(age);
         this.setGender(gender);

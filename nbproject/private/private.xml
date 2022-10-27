@@ -4,8 +4,14 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/jagru/OneDrive/Documents/NetBeansProjects/Assignment_2/src/assignment_2/loginClass.java</file>
+            <file>file:/C:/Users/jagru/OneDrive/Documents/NetBeansProjects/Assignment_2/src/views/system_admin.java</file>
+            <file>file:/C:/Users/jagru/OneDrive/Documents/NetBeansProjects/Assignment_2/src/views/UserFrame.java</file>
+            <file>file:/C:/Users/jagru/OneDrive/Documents/NetBeansProjects/Assignment_2/src/views/CreateDoctor.java</file>
+            <file>file:/C:/Users/jagru/OneDrive/Documents/NetBeansProjects/Assignment_2/src/views/CreatePatient.java</file>
             <file>file:/C:/Users/jagru/OneDrive/Documents/NetBeansProjects/Assignment_2/src/views/login.java</file>
+            <file>file:/C:/Users/jagru/OneDrive/Documents/NetBeansProjects/Assignment_2/src/assignment_2/PatientClass.java</file>
             <file>file:/C:/Users/jagru/OneDrive/Documents/NetBeansProjects/Assignment_2/src/assignment_2/Assignment_2.java</file>
+            <file>file:/C:/Users/jagru/OneDrive/Documents/NetBeansProjects/Assignment_2/src/assignment_2/CommunityClass.java</file>
         </group>
     </open-files>
 </project-private>

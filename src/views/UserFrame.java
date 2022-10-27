@@ -4,12 +4,13 @@
  */
 package views;
 
+import static assignment_2.Assignment_2.cities;
+
 /**
  *
  * @author jagru
  */
 public class UserFrame extends javax.swing.JFrame {
-
     /**
      * Creates new form UserFrame
      */
@@ -35,8 +36,18 @@ public class UserFrame extends javax.swing.JFrame {
         jButton1.setText("Community Admin");
 
         jButton2.setText("Doctor");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Patient");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -64,6 +75,26 @@ public class UserFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+        CreateDoctor doc = new CreateDoctor();
+        for(int i=0;i<cities.size();i++) {
+            doc.jComboBox1.addItem(cities.get(i));
+        }
+        doc.show();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+        CreatePatient patient = new CreatePatient();
+        for(int i=0;i<cities.size();i++) {
+            patient.jComboBox1.addItem(cities.get(i));
+        }
+        patient.show();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

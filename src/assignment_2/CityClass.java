@@ -4,6 +4,8 @@
  */
 package assignment_2;
 
+import static assignment_2.Assignment_2.cities;
+
 /**
  *
  * @author jagru
@@ -21,5 +23,10 @@ public class CityClass {
 
     public void setCity(String city) {
         this.city = city;
-    }    
+    } 
+    
+    public static void addCity(String city) {
+        cities.add(city);
+        System.out.println(cities.size());
+    }
 }

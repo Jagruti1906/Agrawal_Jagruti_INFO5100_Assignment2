@@ -28,8 +28,8 @@ public class DoctorClass extends PeopleClass{
         this.hospitalName = hospitalName;
     }
     
-    DoctorClass(String username, String name, int age, String gender, String hospitalName, String communityName, String houseName, String address, int zip, String city) {
-        super(name, age, gender, communityName, houseName, address, zip, city);
+    public DoctorClass(String username, String name, int age, String gender, String hospitalName, String communityName, String houseName, int zip, String city) {
+        super(name, age, gender, communityName, houseName, zip, city);
         this.setHospitalName(hospitalName);
         this.setUsername(username);
     }
