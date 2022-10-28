@@ -23,6 +23,9 @@ public class Assignment_2 {
     static public HashMap <String, HospitalClass> hospitals = new HashMap <String, HospitalClass>();
     static public HashMap <String, HouseClass> houses = new HashMap <String, HouseClass>();
     static public ArrayList<String> cities = new ArrayList<String>();
+    
+    public static String comName = "";
+    public static String cityName = "";
     /**
      * @param args the command line arguments
      */
@@ -39,10 +42,20 @@ public class Assignment_2 {
         loginClass sarvesh = new loginClass("Sarvesh","Malpani","Patient");
         users.put(sarvesh.getUsername(), sarvesh);
         cities.add("Boston");
+        CommunityAdmin com1 = new CommunityAdmin("Krishnna", "Krishnna", "Male", "Tremont", 02120, "Boston");
+        communityAdmins.put(com1.getUsername(), com1);
+        DoctorClass doc = new DoctorClass("Albert", "Albert", 20, "Male", "S", "Tremont", "1510", 02120, "Boston");
+        doctors.put(doc.getUsername(),doc);
+        PatientClass p = new PatientClass("Sarvesh", "Sarvesh", 21, "Male", "Tremont", "1510", 02120, "Boston");
+        patients.put(p.getUsername(), p);
+        HouseClass house = new HouseClass("Tremont", "1510", 02120, "Boston");
+        houses.put(house.getHouseName(), house);
         CommunityClass com = new CommunityClass("Jvue", 02120, "Boston");
         community.put(com.getCommunityName(), com);
         HospitalClass hos = new HospitalClass("Ruby", "Jvue", 02120, "Boston");
         hospitals.put(hos.getHospitalName(), hos);
+        HospitalClass hos1 = new HospitalClass("S", "Tremont", 02120, "Boston");
+        hospitals.put(hos1.getHospitalName(), hos1);
 //        CommunityAdmin com = new CommunityAdmin("Jagruti","Jagruti","Jvue",02120,"Boston");
 //        communityAdmins.put(com.getUsername(), com);
 //        System.out.println(com.getCity());

@@ -139,6 +139,7 @@ public class system_admin extends javax.swing.JFrame {
         }
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
         view.jTable1.setModel(model);
+        view.jButton3.setVisible(false);
         view.show();
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -157,6 +158,7 @@ public class system_admin extends javax.swing.JFrame {
         }
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
         view.jTable1.setModel(model);
+        view.jButton3.setVisible(false);
         view.show();
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -209,6 +211,7 @@ public class system_admin extends javax.swing.JFrame {
         }
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
         view.jTable1.setModel(model);
+        view.jButton3.setVisible(false);
         view.show();
     }//GEN-LAST:event_jButton6ActionPerformed
 

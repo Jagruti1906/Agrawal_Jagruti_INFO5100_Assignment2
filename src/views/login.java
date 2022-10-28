@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package views;
+import static assignment_2.Assignment_2.communityAdmins;
 import static assignment_2.Assignment_2.users;
 import javax.swing.JOptionPane;
 /**
@@ -88,8 +89,9 @@ public class login extends javax.swing.JFrame {
 //            }
             else if(users.get(userName).getType().equals("Community Admin")) {
                 this.hide();
-                system_admin system = new system_admin();
-                system.show();
+                CommunityAdmin comAdmin = new CommunityAdmin();
+                comAdmin.getCom(communityAdmins.get(userName).getCommunityName(),communityAdmins.get(userName).getCity());
+                comAdmin.show();
             }
 //            else if(users.get(userName).getType().equals("Patient")) {
 //                this.hide();

@@ -5,7 +5,6 @@
 package views;
 
 import static assignment_2.Assignment_2.community;
-import assignment_2.CommunityAdmin;
 import assignment_2.CommunityClass;
 
 /**
@@ -106,7 +105,6 @@ public class CreateCommunity extends javax.swing.JFrame {
         this.hide();
         CommunityClass com = new CommunityClass(jTextField1.getText(), Integer.parseInt(jTextField3.getText()), jComboBox1.getSelectedItem().toString());
         community.put(com.getCommunityName(), com);
-        System.out.println(community.size());
         system_admin system = new system_admin();
         system.show();
     }//GEN-LAST:event_jButton1ActionPerformed
