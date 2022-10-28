@@ -4,8 +4,11 @@
  */
 package views;
 import static assignment_2.Assignment_2.communityAdmins;
+import static assignment_2.Assignment_2.doctors;
+import static assignment_2.Assignment_2.encounters;
 import static assignment_2.Assignment_2.users;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author jagru
@@ -82,11 +85,12 @@ public class login extends javax.swing.JFrame {
                 system_admin system = new system_admin();
                 system.show();
             }
-//            else if(users.get(userName).getType().equals("Doctor")) {
-//                this.hide();
-//                system_admin system = new system_admin();
-//                system.show();
-//            }
+            else if(users.get(userName).getType().equals("Doctor")) {
+                this.hide();
+                DoctorForm doc = new DoctorForm();
+                doc.getDocUsername(userName, doctors.get(userName).getName());
+                doc.show();
+            }
             else if(users.get(userName).getType().equals("Community Admin")) {
                 this.hide();
                 CommunityAdmin comAdmin = new CommunityAdmin();

@@ -10,6 +10,15 @@ package assignment_2;
  */
 public class PatientClass extends PeopleClass{
     private String username;
+    private int patientID;
+
+    public int getPatientID() {
+        return patientID;
+    }
+
+    public void setPatientID(int patientID) {
+        this.patientID = patientID;
+    }
 
     public String getUsername() {
         return username;
@@ -19,8 +28,9 @@ public class PatientClass extends PeopleClass{
         this.username = username;
     }
     
-    public PatientClass(String username, String name, int age, String gender, String communityName, String houseName, int zip, String city) {
+    public PatientClass(String username,int patientID, String name, int age, String gender, String communityName, String houseName, int zip, String city) {
         super(name, age, gender, communityName, houseName, zip, city);
         this.setUsername(username);
+        this.setPatientID(patientID);
     }
 }

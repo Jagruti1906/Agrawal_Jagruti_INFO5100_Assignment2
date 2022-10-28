@@ -11,6 +11,15 @@ package assignment_2;
 public class DoctorClass extends PeopleClass{
     private String hospitalName;
     private String username;
+    private int doctorID;
+
+    public int getDoctorID() {
+        return doctorID;
+    }
+
+    public void setDoctorID(int doctorID) {
+        this.doctorID = doctorID;
+    }
 
     public String getUsername() {
         return username;
@@ -28,9 +37,10 @@ public class DoctorClass extends PeopleClass{
         this.hospitalName = hospitalName;
     }
     
-    public DoctorClass(String username, String name, int age, String gender, String hospitalName, String communityName, String houseName, int zip, String city) {
+    public DoctorClass(String username, int doctorID, String name, int age, String gender, String hospitalName, String communityName, String houseName, int zip, String city) {
         super(name, age, gender, communityName, houseName, zip, city);
         this.setHospitalName(hospitalName);
         this.setUsername(username);
+        this.setDoctorID(doctorID);
     }
 }
