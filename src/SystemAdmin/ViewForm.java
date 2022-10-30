@@ -13,8 +13,16 @@ import SystemAdmin.CreateDoctor;
 import SystemAdmin.CreateCommunity;
 import SystemAdmin.CreateCity;
 import static assignment_2.Assignment_2.cities;
+import static assignment_2.Assignment_2.doctors;
 import static assignment_2.Assignment_2.hospitals;
+import static assignment_2.Assignment_2.patients;
 import assignment_2.CityClass;
+import assignment_2.DoctorClass;
+import assignment_2.HospitalClass;
+import assignment_2.PatientClass;
+import java.util.HashMap;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -223,6 +231,45 @@ public class ViewForm extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+        if(jTable1.getSelectedRowCount() == 1) {
+            if(jLabel1.getText() == "Doctor") {
+                int id = Integer.parseInt(tableModel.getValueAt(jTable1.getSelectedRow(), 0).toString());
+                for (HashMap.Entry<String, DoctorClass> set : doctors.entrySet()) {
+                    if(set.getValue().getDoctorID() == id) {
+                        doctors.remove(set.getKey());
+                        tableModel.removeRow(jTable1.getSelectedRow());
+                    }
+                }
+            } 
+            else if(jLabel1.getText() == "Patient") {
+                int id = Integer.parseInt(tableModel.getValueAt(jTable1.getSelectedRow(), 0).toString());
+                for (HashMap.Entry<String, PatientClass> set : patients.entrySet()) {
+                    if(set.getValue().getPatientID()== id) {
+                        patients.remove(set.getKey());
+                        tableModel.removeRow(jTable1.getSelectedRow());
+                    }
+                }
+            }
+            else if(jLabel1.getText() == "Hospitals") {
+                String name = tableModel.getValueAt(jTable1.getSelectedRow(), 0).toString();
+                hospitals.remove(name);
+                tableModel.removeRow(jTable1.getSelectedRow());
+                for (HashMap.Entry<String, DoctorClass> set1 : doctors.entrySet()) {
+                    if(set1.getValue().getHospitalName()== name) {
+                        doctors.remove(set1.getKey());
+                    }
+                }
+            }
+        }
+        else {
+            if(jTable1.getSelectedRowCount() == 0) {
+                JOptionPane.showMessageDialog(this, "The table is empty or select a row.");
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "Select one row at a time.");
+            }
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

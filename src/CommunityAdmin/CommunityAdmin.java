@@ -179,6 +179,8 @@ public class CommunityAdmin extends javax.swing.JFrame {
         }
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
         view.jTable1.setModel(model);
+        view.jButton1.setVisible(false);
+        view.jButton2.setVisible(false);
         view.show();
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -199,6 +201,8 @@ public class CommunityAdmin extends javax.swing.JFrame {
         }
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
         view.jTable1.setModel(model);
+        view.jButton1.setVisible(false);
+        view.jButton2.setVisible(false);
         view.show();
     }//GEN-LAST:event_jButton3ActionPerformed
 

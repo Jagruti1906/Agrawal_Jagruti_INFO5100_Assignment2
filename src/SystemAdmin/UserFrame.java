@@ -111,14 +111,16 @@ public class UserFrame extends javax.swing.JFrame {
         this.hide();
         ViewForm view = new ViewForm();
         view.jLabel1.setText(jButton2.getText());
-        String[] columnNames = {"Name", "Hospital Name", "Community", "City"};
-        String[][] rows = new String[doctors.size()][4];
+        String[] columnNames = {"ID","Name", "Hospital Name", "Community", "City"};
+        String[][] rows = new String[doctors.size()][5];
         int i=0;
         for (HashMap.Entry<String, DoctorClass> set : doctors.entrySet()) {
-            rows[i][0] = set.getValue().getName();
-            rows[i][1] = set.getValue().getHospitalName();
-            rows[i][2] = set.getValue().getCommunityName();
-            rows[i][3] = set.getValue().getCity();
+            int id = set.getValue().getDoctorID();
+            rows[i][0] = Integer.toString(id);
+            rows[i][1] = set.getValue().getName();
+            rows[i][2] = set.getValue().getHospitalName();
+            rows[i][3] = set.getValue().getCommunityName();
+            rows[i][4] = set.getValue().getCity();
             i++;
         }
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
@@ -131,18 +133,22 @@ public class UserFrame extends javax.swing.JFrame {
         this.hide();
         ViewForm view = new ViewForm();
         view.jLabel1.setText(jButton3.getText());
-        String[] columnNames = {"Name", "House", "Community", "City"};
-        String[][] rows = new String[patients.size()][4];
+        String[] columnNames = {"ID","Name", "House", "Community", "City"};
+        String[][] rows = new String[patients.size()][5];
         int i=0;
         for (HashMap.Entry<String, PatientClass> set : patients.entrySet()) {
-            rows[i][0] = set.getValue().getName();
-            rows[i][1] = set.getValue().getHouseName();
-            rows[i][2] = set.getValue().getCommunityName();
-            rows[i][3] = set.getValue().getCity();
+            int id = set.getValue().getPatientID();
+            rows[i][0] = Integer.toString(id);
+            rows[i][1] = set.getValue().getName();
+            rows[i][2] = set.getValue().getHouseName();
+            rows[i][3] = set.getValue().getCommunityName();
+            rows[i][4] = set.getValue().getCity();
             i++;
         }
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
         view.jTable1.setModel(model);
+        view.jButton1.setVisible(false);
+        view.jButton2.setVisible(false);
         view.show();
     }//GEN-LAST:event_jButton3ActionPerformed
 
