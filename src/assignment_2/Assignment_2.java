@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import views.HomePage;
 import views.login;
 
 /**
@@ -36,8 +37,8 @@ public class Assignment_2 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        login loginPage = new login();
-        loginPage.show();
+        HomePage home = new HomePage();
+        home.show();
         
         loginClass albert = new loginClass("Albert","Pinto","Doctor");
         users.put(albert.getUsername(), albert);

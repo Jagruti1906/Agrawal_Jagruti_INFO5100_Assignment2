@@ -8,7 +8,6 @@ import static assignment_2.Assignment_2.comName;
 import static assignment_2.Assignment_2.hospitals;
 import assignment_2.HospitalClass;
 import java.util.HashMap;
-import views.DoctorComAdmin;
 import views.PatientComAdmin;
 
 /**

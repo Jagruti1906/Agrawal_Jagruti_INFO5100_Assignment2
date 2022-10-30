@@ -13,6 +13,7 @@ import assignment_2.HospitalClass;
 import assignment_2.HouseClass;
 import java.util.HashMap;
 import javax.swing.table.DefaultTableModel;
+import views.HomePage;
 import views.login;
 
 /**
@@ -192,8 +193,8 @@ public class system_admin extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         this.hide();
-        login signIn = new login();
-        signIn.show();
+        HomePage home = new HomePage();
+        home.show();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed

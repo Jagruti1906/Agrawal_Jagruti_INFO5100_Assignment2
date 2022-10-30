@@ -169,13 +169,13 @@ public class ViewPatient extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.hide();
         PatientForm patient = new PatientForm();
-        DefaultTableModel model = (DefaultTableModel) patient.jTable1.getModel();
-        for(int i=0;i<encounters.size();i++){
-            Format formatter = new SimpleDateFormat("MM/dd/yyyy");
-            String s = formatter.format(encounters.get(i).getDate());
-            String data[] = {encounters.get(i).getDoctorName(), encounters.get(i).getHospitalName(), encounters.get(i).getPatientName(), s, Float.toString(encounters.get(i).getBloodPressure()), Float.toString(encounters.get(i).getHeartRate()), Float.toString(encounters.get(i).getTemperature())};
-            model.addRow(data);
-        }
+//        DefaultTableModel model = (DefaultTableModel) patient.jTable1.getModel();
+//        for(int i=0;i<encounters.size();i++){
+//            Format formatter = new SimpleDateFormat("MM/dd/yyyy");
+//            String s = formatter.format(encounters.get(i).getDate());
+//            String data[] = {encounters.get(i).getDoctorName(), encounters.get(i).getHospitalName(), encounters.get(i).getPatientName(), s, Float.toString(encounters.get(i).getBloodPressure()), Float.toString(encounters.get(i).getHeartRate()), Float.toString(encounters.get(i).getTemperature())};
+//            model.addRow(data);
+//        }
         patient.show();
     }//GEN-LAST:event_jButton1ActionPerformed
 

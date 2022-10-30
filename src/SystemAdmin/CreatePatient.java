@@ -13,6 +13,8 @@ import assignment_2.DoctorClass;
 import assignment_2.PatientClass;
 import assignment_2.loginClass;
 import java.util.HashMap;
+import views.HomePage;
+import views.login;
 
 /**
  *
@@ -227,8 +229,8 @@ public class CreatePatient extends javax.swing.JFrame {
         users.put(user.getUsername(), user);
         PatientClass patient = new PatientClass(jTextField3.getText(),Integer.parseInt(jTextField6.getText()),jTextField1.getText(),Integer.parseInt(jTextField2.getText()), jComboBox4.getSelectedItem().toString(), jComboBox2.getSelectedItem().toString(), jTextField4.getText(), Integer.parseInt(jTextField5.getText()), jComboBox1.getSelectedItem().toString());
         patients.put(patient.getUsername(), patient);
-        UserFrame userFrame = new UserFrame();
-        userFrame.show();
+        HomePage home = new HomePage();
+        home.show();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed

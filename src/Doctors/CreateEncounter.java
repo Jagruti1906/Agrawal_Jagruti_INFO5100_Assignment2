@@ -209,16 +209,7 @@ public class CreateEncounter extends javax.swing.JFrame {
         this.hide();
         Encounter enc = new Encounter(jTextField1.getText(), jDateChooser1.getDate(), Integer.parseInt(jTextField2.getText()), Integer.parseInt(jTextField3.getText()), jTextField7.getText(),jTextField8.getText(), Float.parseFloat(jTextField5.getText()), Float.parseFloat(jTextField4.getText()), Float.parseFloat(jTextField6.getText()));
         encounters.add(enc);
-        DoctorForm doc = new DoctorForm();
-        
-        DefaultTableModel model = (DefaultTableModel) doc.jTable1.getModel();
-        for(int i=0;i<encounters.size();i++){
-            Format formatter = new SimpleDateFormat("MM/dd/yyyy");
-            String s = formatter.format(encounters.get(i).getDate());
-            String data[] = {Integer.toString(encounters.get(i).getPatientID()), encounters.get(i).getPatientName(), s, Float.toString(encounters.get(i).getBloodPressure()), Float.toString(encounters.get(i).getHeartRate()), Float.toString(encounters.get(i).getTemperature())};
-            model.addRow(data);
-        }
-                
+        DoctorForm doc = new DoctorForm();        
         doc.show();
     }//GEN-LAST:event_jButton1ActionPerformed
 
