@@ -29,6 +29,8 @@ public class Assignment_2 {
     public static String cityName = "";
     public static String docUsername = "";
     public static String docName = "";
+    public static String patientUserName = "";
+    public static String patientName = "";
     /**
      * @param args the command line arguments
      */
@@ -36,6 +38,7 @@ public class Assignment_2 {
         // TODO code application logic here
         login loginPage = new login();
         loginPage.show();
+        
         loginClass albert = new loginClass("Albert","Pinto","Doctor");
         users.put(albert.getUsername(), albert);
         loginClass jagruti = new loginClass("Jagruti","Agrawal","System Admin");
@@ -44,21 +47,30 @@ public class Assignment_2 {
         users.put(krishnna.getUsername(), krishnna);
         loginClass sarvesh = new loginClass("Sarvesh","Malpani","Patient");
         users.put(sarvesh.getUsername(), sarvesh);
+        
         cities.add("Boston");
+        
         CommunityAdmin com1 = new CommunityAdmin("Krishnna", "Krishnna", "Male", "Tremont", 02120, "Boston");
         communityAdmins.put(com1.getUsername(), com1);
+        
         DoctorClass doc = new DoctorClass("Albert",12, "Albert", 20, "Male", "S", "Tremont", "1510", 02120, "Boston");
         doctors.put(doc.getUsername(),doc);
+        
         PatientClass p = new PatientClass("Sarvesh", 1, "Sarvesh", 21, "Male", "Tremont", "1510", 02120, "Boston");
         patients.put(p.getUsername(), p);
+        
         HouseClass house = new HouseClass("Tremont", "1510", 02120, "Boston");
         houses.put(house.getHouseName(), house);
+        
         CommunityClass com = new CommunityClass("Jvue", 02120, "Boston");
         community.put(com.getCommunityName(), com);
+        
         HospitalClass hos = new HospitalClass("Ruby", "Jvue", 02120, "Boston");
         hospitals.put(hos.getHospitalName(), hos);
         HospitalClass hos1 = new HospitalClass("S", "Tremont", 02120, "Boston");
         hospitals.put(hos1.getHospitalName(), hos1);
+        
+        
 //        CommunityAdmin com = new CommunityAdmin("Jagruti","Jagruti","Jvue",02120,"Boston");
 //        communityAdmins.put(com.getUsername(), com);
 //        System.out.println(com.getCity());

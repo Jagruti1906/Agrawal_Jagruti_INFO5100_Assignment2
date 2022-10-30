@@ -16,6 +16,15 @@ public class Encounter extends Vitals{
     private Date date;
     private int patientID;
     private int doctorID;
+    private String hospitalName;
+
+    public String getHospitalName() {
+        return hospitalName;
+    }
+
+    public void setHospitalName(String hospitalName) {
+        this.hospitalName = hospitalName;
+    }
 
     public String getPatientName() {
         return patientName;
@@ -57,13 +66,14 @@ public class Encounter extends Vitals{
         this.doctorID = doctorID;
     }
 
-    public Encounter(String patientName, Date date, int patientID, int doctorID, String doctorName, float bloodPressure, float heartRate, float temperature) {
+    public Encounter(String patientName, Date date, int patientID, int doctorID, String doctorName, String hospitalName, float bloodPressure, float heartRate, float temperature) {
         super(bloodPressure, heartRate, temperature);
         this.patientName = patientName;
         this.doctorName = doctorName;
         this.date = date;
         this.patientID = patientID;
         this.doctorID = doctorID;
+        this.setHospitalName(hospitalName);
     }
 
     

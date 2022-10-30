@@ -3,9 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package views;
+import CommunityAdmin.CommunityAdmin;
+import Doctors.DoctorForm;
+import Patients.PatientForm;
+import SystemAdmin.system_admin;
 import static assignment_2.Assignment_2.communityAdmins;
 import static assignment_2.Assignment_2.doctors;
 import static assignment_2.Assignment_2.encounters;
+import static assignment_2.Assignment_2.patients;
 import static assignment_2.Assignment_2.users;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -97,11 +102,12 @@ public class login extends javax.swing.JFrame {
                 comAdmin.getCom(communityAdmins.get(userName).getCommunityName(),communityAdmins.get(userName).getCity());
                 comAdmin.show();
             }
-//            else if(users.get(userName).getType().equals("Patient")) {
-//                this.hide();
-//                system_admin system = new system_admin();
-//                system.show();
-//            }
+            else if(users.get(userName).getType().equals("Patient")) {
+                this.hide();
+                PatientForm patient = new PatientForm();
+                patient.getPatient(userName, patients.get(userName).getName());
+                patient.show();
+            }
         }
         else {
             JOptionPane.showMessageDialog(this, "Incorrect Details.");
