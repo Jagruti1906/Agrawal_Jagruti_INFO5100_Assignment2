@@ -147,7 +147,7 @@ public class ViewComForm extends javax.swing.JFrame {
         else if(jLabel1.getText() == "Doctors") {
             this.hide();
             DoctorComAdmin doc = new DoctorComAdmin();
-            for (HashMap.Entry<String, HospitalClass> set : hospitals.entrySet()) {
+            for (HashMap.Entry<Integer, HospitalClass> set : hospitals.entrySet()) {
                 if(set.getValue().getCommunityName().equals(comName)) {
                     doc.jComboBox3.addItem(set.getValue().getHospitalName());
                 }

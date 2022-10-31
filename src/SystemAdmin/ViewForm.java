@@ -227,6 +227,65 @@ public class ViewForm extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        this.hide();
+        DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+        if(jTable1.getSelectedRowCount() == 1) {
+            if(jLabel1.getText() == "Hospitals") {
+                int id = Integer.parseInt(tableModel.getValueAt(jTable1.getSelectedRow(), 0).toString());
+                CreateHospital hosp = new CreateHospital();
+                for (HashMap.Entry<Integer, HospitalClass> set : hospitals.entrySet()) {
+                    if(set.getValue().getHospitalID()== id) {
+                        hosp.jTextField4.setText(Integer.toString(set.getValue().getHospitalID()));
+                        hosp.jTextField4.setEnabled(false);
+                        hosp.jTextField1.setText(set.getValue().getHospitalName());
+                        hosp.jComboBox1.addItem(set.getValue().getCity());
+                        hosp.jComboBox1.setEnabled(false);
+                        hosp.jComboBox2.addItem(set.getValue().getCommunityName());
+                        hosp.jComboBox2.setEnabled(false);
+                        hosp.jTextField2.setText(Integer.toString(set.getValue().getZip()));
+                        hosp.jTextField2.setEnabled(false);
+                    }
+                }
+                hosp.show();
+            }
+//            int id = Integer.parseInt(tableModel.getValueAt(jTable1.getSelectedRow(), 1).toString());
+//            for(int i=0;i<MainClass.employeeList.size();i++) {
+//                if(MainClass.employeeList.get(i).getEmployeeId() == id) {
+//                    path = MainClass.employeeList.get(i).getFilePath();
+//                    addEmp.jTextField1.setText(MainClass.employeeList.get(i).getName());
+//                    addEmp.jTextField2.setText(Integer.toString(MainClass.employeeList.get(i).getEmployeeId()));
+//                    addEmp.jTextField4.setText(Integer.toString(MainClass.employeeList.get(i).getAge()));
+//                    if(MainClass.employeeList.get(i).getGender() == "Male") {
+//                        addEmp.jRadioButton1.setSelected(true);
+//                    }
+//                    else if(MainClass.employeeList.get(i).getGender() == "Female") {
+//                        addEmp.jRadioButton2.setSelected(true);
+//                    } 
+//                    else {
+//                        addEmp.jRadioButton3.setSelected(true);
+//                    }
+//                    addEmp.jDateChooser1.setDate(MainClass.employeeList.get(i).getStartDate());
+//                    addEmp.jTextField3.setText(Integer.toString(MainClass.employeeList.get(i).getLevel()));
+//                    addEmp.jTextArea2.setText(MainClass.employeeList.get(i).getTeamInfo());
+//                    addEmp.jTextField5.setText(MainClass.employeeList.get(i).getPositionTitle());
+//                    addEmp.jTextField7.setText(MainClass.employeeList.get(i).getPhoneNumber());
+//                    addEmp.jTextField6.setText(MainClass.employeeList.get(i).getEmail());
+//                    
+//                }
+//            }
+//            this.hide();
+//            addEmp.show();
+        }
+        else {
+            system_admin system = new system_admin();
+            system.show();
+            if(jTable1.getSelectedRowCount() == 0) {
+                JOptionPane.showMessageDialog(this, "The table is empty or select a row.");
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "Select one row at a time.");
+            }
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -252,8 +311,9 @@ public class ViewForm extends javax.swing.JFrame {
                 }
             }
             else if(jLabel1.getText() == "Hospitals") {
-                String name = tableModel.getValueAt(jTable1.getSelectedRow(), 0).toString();
-                hospitals.remove(name);
+                String name = tableModel.getValueAt(jTable1.getSelectedRow(), 1).toString();
+                int id = Integer.parseInt(tableModel.getValueAt(jTable1.getSelectedRow(), 0).toString());
+                hospitals.remove(id);
                 tableModel.removeRow(jTable1.getSelectedRow());
                 for (HashMap.Entry<String, DoctorClass> set1 : doctors.entrySet()) {
                     if(set1.getValue().getHospitalName()== name) {

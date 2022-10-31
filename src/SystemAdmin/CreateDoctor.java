@@ -279,7 +279,7 @@ public class CreateDoctor extends javax.swing.JFrame {
         // TODO add your handling code here:
         jComboBox3.removeAllItems();
         if(jComboBox2.getSelectedItem() != null) {
-            for (HashMap.Entry<String, HospitalClass> set : hospitals.entrySet()) {
+            for (HashMap.Entry<Integer, HospitalClass> set : hospitals.entrySet()) {
                 String comName = set.getValue().getCommunityName();
                 if(jComboBox2.getSelectedItem().toString().equals(comName)) {
                     jComboBox3.addItem(set.getValue().getHospitalName());

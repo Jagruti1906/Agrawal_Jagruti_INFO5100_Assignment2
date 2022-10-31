@@ -209,6 +209,7 @@ public class CreateEncounter extends javax.swing.JFrame {
         this.hide();
         Encounter enc = new Encounter(jTextField1.getText(), jDateChooser1.getDate(), Integer.parseInt(jTextField2.getText()), Integer.parseInt(jTextField3.getText()), jTextField7.getText(),jTextField8.getText(), Float.parseFloat(jTextField5.getText()), Float.parseFloat(jTextField4.getText()), Float.parseFloat(jTextField6.getText()));
         encounters.add(enc);
+        System.out.println(jDateChooser1.getDate());
         DoctorForm doc = new DoctorForm();        
         doc.show();
     }//GEN-LAST:event_jButton1ActionPerformed

@@ -141,6 +141,7 @@ public class system_admin extends javax.swing.JFrame {
         }
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
         view.jTable1.setModel(model);
+        view.jButton2.setVisible(false);
         view.jButton3.setVisible(false);
         view.show();
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -160,6 +161,7 @@ public class system_admin extends javax.swing.JFrame {
         }
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
         view.jTable1.setModel(model);
+        view.jButton2.setVisible(false);
         view.jButton3.setVisible(false);
         view.show();
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -169,13 +171,15 @@ public class system_admin extends javax.swing.JFrame {
         this.hide();
         ViewForm view = new ViewForm();
         view.jLabel1.setText(jButton1.getText());
-        String[] columnNames = {"Hospital Name", "Community", "City"};
-        String[][] rows = new String[hospitals.size()][3];
+        String[] columnNames = {"ID","Hospital Name", "Community", "City"};
+        String[][] rows = new String[hospitals.size()][4];
         int i=0;
-        for (HashMap.Entry<String, HospitalClass> set : hospitals.entrySet()) {
-            rows[i][0] = set.getValue().getHospitalName();
-            rows[i][1] = set.getValue().getCommunityName();
-            rows[i][2] = set.getValue().getCity();
+        for (HashMap.Entry<Integer, HospitalClass> set : hospitals.entrySet()) {
+            int id = set.getValue().getHospitalID();
+            rows[i][0] = Integer.toString(id);
+            rows[i][1] = set.getValue().getHospitalName();
+            rows[i][2] = set.getValue().getCommunityName();
+            rows[i][3] = set.getValue().getCity();
             i++;
         }
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
@@ -213,6 +217,7 @@ public class system_admin extends javax.swing.JFrame {
         }
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
         view.jTable1.setModel(model);
+        view.jButton2.setVisible(false);
         view.jButton3.setVisible(false);
         view.show();
     }//GEN-LAST:event_jButton6ActionPerformed

@@ -151,7 +151,7 @@ public class CommunityAdmin extends javax.swing.JFrame {
         String[] columnNames = {"Hospital Name"};
         String[][] rows = new String[hospitals.size()][1];
         int i=0;
-        for (HashMap.Entry<String, HospitalClass> set : hospitals.entrySet()) {
+        for (HashMap.Entry<Integer, HospitalClass> set : hospitals.entrySet()) {
             if(set.getValue().getCommunityName().equals(jLabel1.getText())) {
                 rows[i][0] = set.getValue().getHospitalName();
                 i++;

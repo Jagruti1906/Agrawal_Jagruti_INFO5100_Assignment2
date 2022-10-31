@@ -21,7 +21,7 @@ public class Assignment_2 {
     static public HashMap <String, PatientClass> patients = new HashMap <String, PatientClass>();
     static public HashMap <String, CommunityAdmin> communityAdmins = new HashMap <String, CommunityAdmin>();
     static public HashMap <String, CommunityClass> community = new HashMap <String, CommunityClass>();
-    static public HashMap <String, HospitalClass> hospitals = new HashMap <String, HospitalClass>();
+    static public HashMap <Integer, HospitalClass> hospitals = new HashMap <Integer, HospitalClass>();
     static public HashMap <String, HouseClass> houses = new HashMap <String, HouseClass>();
     static public ArrayList<String> cities = new ArrayList<String>();
     static public ArrayList<Encounter> encounters = new ArrayList<Encounter>();
@@ -66,10 +66,10 @@ public class Assignment_2 {
         CommunityClass com = new CommunityClass("Jvue", 02120, "Boston");
         community.put(com.getCommunityName(), com);
         
-        HospitalClass hos = new HospitalClass("Ruby", "Jvue", 02120, "Boston");
-        hospitals.put(hos.getHospitalName(), hos);
-        HospitalClass hos1 = new HospitalClass("S", "Tremont", 02120, "Boston");
-        hospitals.put(hos1.getHospitalName(), hos1);
+        HospitalClass hos = new HospitalClass(1,"Ruby", "Jvue", 02120, "Boston");
+        hospitals.put(hos.getHospitalID(), hos);
+        HospitalClass hos1 = new HospitalClass(2,"S", "Tremont", 02120, "Boston");
+        hospitals.put(hos1.getHospitalID(), hos1);
         
         
 //        CommunityAdmin com = new CommunityAdmin("Jagruti","Jagruti","Jvue",02120,"Boston");

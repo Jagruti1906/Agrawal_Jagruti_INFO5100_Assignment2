@@ -10,6 +10,15 @@ package assignment_2;
  */
 public class HospitalClass extends CommunityClass{
     private String hospitalName;
+    private int hospitalID;
+
+    public int getHospitalID() {
+        return hospitalID;
+    }
+
+    public void setHospitalID(int hospitalID) {
+        this.hospitalID = hospitalID;
+    }
 
     public String getHospitalName() {
         return hospitalName;
@@ -19,8 +28,9 @@ public class HospitalClass extends CommunityClass{
         this.hospitalName = hospitalName;
     }
     
-    public HospitalClass(String hospitalName, String name, int zip, String city) {
+    public HospitalClass(int hospitalID, String hospitalName, String name, int zip, String city) {
         super(name,zip,city);
         this.setHospitalName(hospitalName);
+        this.setHospitalID(hospitalID);
     }
 }
