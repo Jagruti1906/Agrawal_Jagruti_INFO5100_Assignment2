@@ -4,7 +4,6 @@
  */
 package Patients;
 
-import static assignment_2.Assignment_2.encounters;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import javax.swing.table.DefaultTableModel;

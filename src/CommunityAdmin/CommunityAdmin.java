@@ -148,12 +148,14 @@ public class CommunityAdmin extends javax.swing.JFrame {
         this.hide();
         ViewComForm view = new ViewComForm();
         view.jLabel1.setText(jButton1.getText());
-        String[] columnNames = {"Hospital Name"};
-        String[][] rows = new String[hospitals.size()][1];
+        String[] columnNames = {"ID","Hospital Name"};
+        String[][] rows = new String[hospitals.size()][2];
         int i=0;
         for (HashMap.Entry<Integer, HospitalClass> set : hospitals.entrySet()) {
             if(set.getValue().getCommunityName().equals(jLabel1.getText())) {
-                rows[i][0] = set.getValue().getHospitalName();
+                int id = set.getValue().getHospitalID();
+                rows[i][0] = Integer.toString(id);
+                rows[i][1] = set.getValue().getHospitalName();
                 i++;
             }
         }
@@ -222,6 +224,7 @@ public class CommunityAdmin extends javax.swing.JFrame {
         }
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
         view.jTable1.setModel(model);
+        view.jButton2.setVisible(false);
         view.show();
     }//GEN-LAST:event_jButton4ActionPerformed
 

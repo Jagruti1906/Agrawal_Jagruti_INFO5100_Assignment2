@@ -4,6 +4,7 @@
  */
 package Doctors;
 
+
 import static assignment_2.Assignment_2.encounters;
 import assignment_2.Encounter;
 import java.text.Format;

@@ -181,7 +181,7 @@ public class PatientForm extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) enc.jTable1.getModel();
         for(int i=0;i<encounters.size();i++){
             if(encounters.get(i).getPatientID()== id) {
-                Format formatter = new SimpleDateFormat("MM/dd/yyyy");
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM HH:mm");
                 String s = formatter.format(encounters.get(i).getDate());
                 String data[] = {encounters.get(i).getDoctorName(), encounters.get(i).getHospitalName(), s, Float.toString(encounters.get(i).getBloodPressure()), Float.toString(encounters.get(i).getHeartRate()), Float.toString(encounters.get(i).getTemperature())};
                 model.addRow(data);

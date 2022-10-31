@@ -8,6 +8,8 @@ import static assignment_2.Assignment_2.comName;
 import static assignment_2.Assignment_2.hospitals;
 import assignment_2.HospitalClass;
 import java.util.HashMap;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import views.PatientComAdmin;
 
 /**
@@ -43,10 +45,7 @@ public class ViewComForm extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
@@ -164,68 +163,38 @@ public class ViewComForm extends javax.swing.JFrame {
             HouseComAdmin house = new HouseComAdmin();
             house.show();
         }
-//        system_admin system = new system_admin();
-//        if(jLabel1.getText() == "City") {
-//            //            jLabel1.setText("City");
-//            this.hide();
-//            CreateCity city = new CreateCity();
-//            city.show();
-//        }
-//        else if(jLabel1.getText() == "Community") {
-//            this.hide();
-//            CreateCommunity com = new CreateCommunity();
-//            for(int i=0;i<cities.size();i++) {
-//                com.jComboBox1.addItem(cities.get(i));
-//            }
-//            com.show();
-//        }
-//        else if(jLabel1.getText() == "Hospitals") {
-//            this.hide();
-//            CreateHospital hos = new CreateHospital();
-//            //            for(int i=0;i<hospitals.size();i++) {
-//                //                hos.jComboBox1.addItem(hospitals.get(i));
-//                //            }
-//            for(int i=0;i<cities.size();i++) {
-//                hos.jComboBox1.addItem(cities.get(i));
-//            }
-//            hos.show();
-//        }
-//        else if(jLabel1.getText() == "Doctor") {
-//            this.hide();
-//            CreateDoctor doc = new CreateDoctor();
-//            for(int i=0;i<cities.size();i++) {
-//                doc.jComboBox1.addItem(cities.get(i));
-//            }
-//            doc.show();
-//        }
-//        else if(jLabel1.getText() == "Patient") {
-//            this.hide();
-//            CreatePatient patient = new CreatePatient();
-//            for(int i=0;i<cities.size();i++) {
-//                patient.jComboBox1.addItem(cities.get(i));
-//            }
-//            patient.show();
-//        }
-//        else if(jLabel1.getText() == "Community Admin") {
-//            this.hide();
-//            CreateCommunityAdmin communityAdmin = new CreateCommunityAdmin();
-//            for(int i=0;i<cities.size();i++) {
-//                communityAdmin.jComboBox1.addItem(cities.get(i));
-//            }
-//            communityAdmin.show();
-//        }
-//        else if(jLabel1.getText() == "House") {
-//            this.hide();
-//            CreateHouse house = new CreateHouse();
-//            for(int i=0;i<cities.size();i++) {
-//                house.jComboBox1.addItem(cities.get(i));
-//            }
-//            house.show();
-//        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        this.hide();
+        DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+        if(jTable1.getSelectedRowCount() == 1) {
+            if(jLabel1.getText() == "Hospitals") {
+                int id = Integer.parseInt(tableModel.getValueAt(jTable1.getSelectedRow(), 0).toString());
+                CreateHospComAdmin hosp = new CreateHospComAdmin();
+                for (HashMap.Entry<Integer, HospitalClass> set : hospitals.entrySet()) {
+                    if(set.getValue().getHospitalID()== id) {
+                        hosp.jTextField3.setText(Integer.toString(set.getValue().getHospitalID()));
+                        hosp.jTextField3.setEnabled(false);
+                        hosp.jTextField1.setText(set.getValue().getHospitalName());
+                        hosp.jTextField2.setText(Integer.toString(set.getValue().getZip()));
+                        hosp.jTextField2.setEnabled(false);
+                    }
+                }
+                hosp.show();
+            }
+        }
+        else {
+            CommunityAdmin system = new CommunityAdmin();
+            system.show();
+            if(jTable1.getSelectedRowCount() == 0) {
+                JOptionPane.showMessageDialog(this, "The table is empty or select a row.");
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "Select one row at a time.");
+            }
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

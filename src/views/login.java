@@ -11,7 +11,6 @@ import SystemAdmin.system_admin;
 import static assignment_2.Assignment_2.cities;
 import static assignment_2.Assignment_2.communityAdmins;
 import static assignment_2.Assignment_2.doctors;
-import static assignment_2.Assignment_2.encounters;
 import static assignment_2.Assignment_2.patients;
 import static assignment_2.Assignment_2.users;
 import javax.swing.JOptionPane;

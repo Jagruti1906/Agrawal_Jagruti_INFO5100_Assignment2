@@ -7,8 +7,11 @@ package CommunityAdmin;
 import static assignment_2.Assignment_2.cityName;
 import static assignment_2.Assignment_2.comName;
 import static assignment_2.Assignment_2.community;
+import static assignment_2.Assignment_2.doctors;
 import static assignment_2.Assignment_2.hospitals;
+import assignment_2.DoctorClass;
 import assignment_2.HospitalClass;
+import java.util.HashMap;
 
 /**
  *
@@ -120,6 +123,23 @@ public class CreateHospComAdmin extends javax.swing.JFrame {
         this.hide();
         CommunityAdmin comAdmin = new CommunityAdmin();
         HospitalClass hosp = new HospitalClass(Integer.parseInt(jTextField3.getText()), jTextField1.getText(), comName,Integer.parseInt(jTextField2.getText()), cityName);
+        int flag = 0;
+        if(hospitals.containsKey(Integer.parseInt(jTextField3.getText()))) {
+            hospitals.replace(Integer.parseInt(jTextField3.getText()), hosp);
+            flag = 1;
+        }
+        else {
+            hospitals.put(hosp.getHospitalID(), hosp);
+        }
+        if(flag == 1) {
+            String name = hospitals.get(Integer.parseInt(jTextField3.getText())).getHospitalName();
+            for (HashMap.Entry<String, DoctorClass> set1 : doctors.entrySet()) {
+                System.out.println(set1.getValue().getHospitalName());
+                if(set1.getValue().getHospitalName().equals(name)) {
+                      doctors.replace(set1.getKey(),new DoctorClass(set1.getValue().getUsername(),set1.getValue().getDoctorID(),set1.getValue().getName(),set1.getValue().getAge(),set1.getValue().getGender(),jTextField1.getText(),set1.getValue().getCommunityName(),set1.getValue().getHouseName(),set1.getValue().getZip(),set1.getValue().getCity()));
+                }
+            }
+        }
         hospitals.put(hosp.getHospitalID(), hosp);
         comAdmin.show();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -161,11 +181,11 @@ public class CreateHospComAdmin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    public javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel2;
+    public javax.swing.JLabel jLabel3;
+    public javax.swing.JTextField jTextField1;
+    public javax.swing.JTextField jTextField2;
+    public javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }
