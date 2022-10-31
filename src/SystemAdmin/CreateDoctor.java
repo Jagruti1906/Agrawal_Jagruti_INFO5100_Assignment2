@@ -257,9 +257,13 @@ public class CreateDoctor extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.hide();
         loginClass user = new loginClass(jTextField3.getText(), jTextField7.getText(),"Doctor");
-        users.put(user.getUsername(), user);
         DoctorClass doctor = new DoctorClass(jTextField3.getText(),Integer.parseInt(jTextField6.getText()),jTextField1.getText(),Integer.parseInt(jTextField2.getText()), jComboBox4.getSelectedItem().toString(), jComboBox3.getSelectedItem().toString(), jComboBox2.getSelectedItem().toString(), jTextField4.getText(), Integer.parseInt(jTextField5.getText()), jComboBox1.getSelectedItem().toString());
+        if(doctors.containsKey(jTextField3.getText())) {
+            doctors.replace(doctor.getUsername(), doctor);
+            users.replace(user.getUsername(), user);
+        }
         doctors.put(doctor.getUsername(), doctor);
+        users.put(user.getUsername(), user);
         UserFrame userFrame = new UserFrame();
         userFrame.show();
     }//GEN-LAST:event_jButton1ActionPerformed

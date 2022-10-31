@@ -4,6 +4,7 @@
  */
 package SystemAdmin;
 
+import Patients.PatientForm;
 import static assignment_2.Assignment_2.community;
 import static assignment_2.Assignment_2.doctors;
 import static assignment_2.Assignment_2.patients;
@@ -226,11 +227,19 @@ public class CreatePatient extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.hide();
         loginClass user = new loginClass(jTextField3.getText(), jTextField7.getText(),"Patient");
-        users.put(user.getUsername(), user);
         PatientClass patient = new PatientClass(jTextField3.getText(),Integer.parseInt(jTextField6.getText()),jTextField1.getText(),Integer.parseInt(jTextField2.getText()), jComboBox4.getSelectedItem().toString(), jComboBox2.getSelectedItem().toString(), jTextField4.getText(), Integer.parseInt(jTextField5.getText()), jComboBox1.getSelectedItem().toString());
-        patients.put(patient.getUsername(), patient);
-        HomePage home = new HomePage();
-        home.show();
+        if(patients.containsKey(jTextField3.getText())) {
+            patients.replace(patient.getUsername(), patient);
+            users.replace(user.getUsername(), user);
+            PatientForm p = new PatientForm();
+            p.show();
+        }
+        else {
+            patients.put(patient.getUsername(), patient);
+            users.put(user.getUsername(), user);
+            HomePage home = new HomePage();
+            home.show();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -282,25 +291,25 @@ public class CreatePatient extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     public javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    public javax.swing.JComboBox<String> jComboBox2;
+    public javax.swing.JComboBox<String> jComboBox4;
+    public javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel10;
+    public javax.swing.JLabel jLabel12;
+    public javax.swing.JLabel jLabel2;
+    public javax.swing.JLabel jLabel3;
+    public javax.swing.JLabel jLabel4;
+    public javax.swing.JLabel jLabel5;
+    public javax.swing.JLabel jLabel6;
+    public javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    public javax.swing.JLabel jLabel9;
+    public javax.swing.JTextField jTextField1;
+    public javax.swing.JTextField jTextField2;
+    public javax.swing.JTextField jTextField3;
     public javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
+    public javax.swing.JTextField jTextField5;
+    public javax.swing.JTextField jTextField6;
+    public javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables
 }

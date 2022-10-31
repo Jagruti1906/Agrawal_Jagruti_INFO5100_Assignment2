@@ -16,6 +16,7 @@ import static assignment_2.Assignment_2.cities;
 import static assignment_2.Assignment_2.doctors;
 import static assignment_2.Assignment_2.hospitals;
 import static assignment_2.Assignment_2.patients;
+import static assignment_2.Assignment_2.users;
 import assignment_2.CityClass;
 import assignment_2.DoctorClass;
 import assignment_2.HospitalClass;
@@ -248,33 +249,28 @@ public class ViewForm extends javax.swing.JFrame {
                 }
                 hosp.show();
             }
-//            int id = Integer.parseInt(tableModel.getValueAt(jTable1.getSelectedRow(), 1).toString());
-//            for(int i=0;i<MainClass.employeeList.size();i++) {
-//                if(MainClass.employeeList.get(i).getEmployeeId() == id) {
-//                    path = MainClass.employeeList.get(i).getFilePath();
-//                    addEmp.jTextField1.setText(MainClass.employeeList.get(i).getName());
-//                    addEmp.jTextField2.setText(Integer.toString(MainClass.employeeList.get(i).getEmployeeId()));
-//                    addEmp.jTextField4.setText(Integer.toString(MainClass.employeeList.get(i).getAge()));
-//                    if(MainClass.employeeList.get(i).getGender() == "Male") {
-//                        addEmp.jRadioButton1.setSelected(true);
-//                    }
-//                    else if(MainClass.employeeList.get(i).getGender() == "Female") {
-//                        addEmp.jRadioButton2.setSelected(true);
-//                    } 
-//                    else {
-//                        addEmp.jRadioButton3.setSelected(true);
-//                    }
-//                    addEmp.jDateChooser1.setDate(MainClass.employeeList.get(i).getStartDate());
-//                    addEmp.jTextField3.setText(Integer.toString(MainClass.employeeList.get(i).getLevel()));
-//                    addEmp.jTextArea2.setText(MainClass.employeeList.get(i).getTeamInfo());
-//                    addEmp.jTextField5.setText(MainClass.employeeList.get(i).getPositionTitle());
-//                    addEmp.jTextField7.setText(MainClass.employeeList.get(i).getPhoneNumber());
-//                    addEmp.jTextField6.setText(MainClass.employeeList.get(i).getEmail());
-//                    
-//                }
-//            }
-//            this.hide();
-//            addEmp.show();
+            else if(jLabel1.getText() == "Doctor") {
+                int id = Integer.parseInt(tableModel.getValueAt(jTable1.getSelectedRow(), 0).toString());
+                CreateDoctor doc = new CreateDoctor();
+                for (HashMap.Entry<String, DoctorClass> set : doctors.entrySet()) {
+                    if(set.getValue().getDoctorID()==id) {
+                        doc.jTextField1.setText(set.getValue().getName());
+                        doc.jTextField2.setText(Integer.toString(set.getValue().getAge()));
+                        doc.jTextField3.setText(set.getValue().getUsername());
+                        doc.jTextField3.setEnabled(false);
+                        doc.jTextField4.setText(set.getValue().getHouseName());
+                        doc.jTextField5.setText(Integer.toString(set.getValue().getZip()));
+                        doc.jTextField6.setText(Integer.toString(set.getValue().getDoctorID()));
+                        doc.jTextField6.setEnabled(false);
+                        for(int i=0;i<cities.size();i++) {
+                            doc.jComboBox1.addItem(cities.get(i));
+                        }
+                        String pass = users.get(set.getValue().getUsername()).getPassword();
+                        doc.jTextField7.setText(pass);
+                    }
+                }
+                doc.show();
+            }
         }
         else {
             system_admin system = new system_admin();

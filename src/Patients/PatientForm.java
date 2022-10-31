@@ -5,18 +5,27 @@
 package Patients;
 
 import Doctors.ViewDoctor;
+import SystemAdmin.CreateDoctor;
+import SystemAdmin.CreateHospital;
+import SystemAdmin.CreatePatient;
+import SystemAdmin.system_admin;
 import assignment_2.Assignment_2;
+import static assignment_2.Assignment_2.cities;
 import static assignment_2.Assignment_2.docUsername;
 import static assignment_2.Assignment_2.doctors;
 import static assignment_2.Assignment_2.encounters;
+import static assignment_2.Assignment_2.hospitals;
 import static assignment_2.Assignment_2.patientName;
 import static assignment_2.Assignment_2.patientUserName;
 import static assignment_2.Assignment_2.patients;
+import static assignment_2.Assignment_2.users;
 import assignment_2.DoctorClass;
+import assignment_2.HospitalClass;
 import assignment_2.PatientClass;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import views.HomePage;
 import views.login;
@@ -55,6 +64,7 @@ public class PatientForm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,6 +91,13 @@ public class PatientForm extends javax.swing.JFrame {
             }
         });
 
+        jButton5.setText("Edit Profile");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -92,14 +109,17 @@ public class PatientForm extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(77, 77, 77)
-                        .addComponent(jButton1)
-                        .addGap(35, 35, 35)
-                        .addComponent(jButton4)
-                        .addGap(41, 41, 41)
-                        .addComponent(jButton2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(243, 243, 243)
-                        .addComponent(jButton3)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton5)
+                                .addGap(91, 91, 91)
+                                .addComponent(jButton3))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addGap(35, 35, 35)
+                                .addComponent(jButton4)
+                                .addGap(41, 41, 41)
+                                .addComponent(jButton2)))))
                 .addContainerGap(64, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -113,7 +133,9 @@ public class PatientForm extends javax.swing.JFrame {
                     .addComponent(jButton4)
                     .addComponent(jButton2))
                 .addGap(43, 43, 43)
-                .addComponent(jButton3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(jButton5))
                 .addContainerGap(113, Short.MAX_VALUE))
         );
 
@@ -163,6 +185,30 @@ public class PatientForm extends javax.swing.JFrame {
         enc.show();
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+        CreatePatient patient = new CreatePatient();
+        for (HashMap.Entry<String, PatientClass> set : patients.entrySet()) {
+            if(set.getValue().getUsername().equals(patientUserName)) {
+                patient.jTextField1.setText(set.getValue().getName());
+                patient.jTextField2.setText(Integer.toString(set.getValue().getAge()));
+                patient.jTextField3.setText(set.getValue().getUsername());
+                patient.jTextField3.setEnabled(false);
+                patient.jTextField4.setText(set.getValue().getHouseName());
+                patient.jTextField5.setText(Integer.toString(set.getValue().getZip()));
+                patient.jTextField6.setText(Integer.toString(set.getValue().getPatientID()));
+                patient.jTextField6.setEnabled(false);
+                for(int i=0;i<cities.size();i++) {
+                    patient.jComboBox1.addItem(cities.get(i));
+                }
+                String pass = users.get(set.getValue().getUsername()).getPassword();
+                patient.jTextField7.setText(pass);
+            }
+        }
+        patient.show();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -203,6 +249,7 @@ public class PatientForm extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
