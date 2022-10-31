@@ -208,8 +208,11 @@ public class CreateEncounter extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.hide();
         Encounter enc = new Encounter(jTextField1.getText(), jDateChooser1.getDate(), Integer.parseInt(jTextField2.getText()), Integer.parseInt(jTextField3.getText()), jTextField7.getText(),jTextField8.getText(), Float.parseFloat(jTextField5.getText()), Float.parseFloat(jTextField4.getText()), Float.parseFloat(jTextField6.getText()));
-        encounters.add(enc);
-        System.out.println(jDateChooser1.getDate());
+        for(int i=0;i<encounters.size();i++) {
+            if(encounters.get(i).getPatientID() == Integer.parseInt(jTextField2.getText())) {
+                encounters.set(i,enc);
+            }
+        }
         DoctorForm doc = new DoctorForm();        
         doc.show();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -250,26 +253,26 @@ public class CreateEncounter extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    public javax.swing.JButton jButton1;
+    public com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    public javax.swing.JLabel jLabel5;
+    public javax.swing.JLabel jLabel6;
+    public javax.swing.JLabel jLabel7;
+    public javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
+    public javax.swing.JTextField jTextField1;
+    public javax.swing.JTextField jTextField2;
+    public javax.swing.JTextField jTextField3;
+    public javax.swing.JTextField jTextField4;
+    public javax.swing.JTextField jTextField5;
+    public javax.swing.JTextField jTextField6;
+    public javax.swing.JTextField jTextField7;
+    public javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
 }

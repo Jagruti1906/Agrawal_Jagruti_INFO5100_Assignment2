@@ -76,6 +76,11 @@ public class PatientForm extends javax.swing.JFrame {
         });
 
         jButton2.setText("Search Hospitals");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Logout");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -208,6 +213,18 @@ public class PatientForm extends javax.swing.JFrame {
         }
         patient.show();
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+        Hospitals hos = new Hospitals();
+        for (HashMap.Entry<Integer, HospitalClass> set : hospitals.entrySet()) {
+            if(set.getValue().getCommunityName().equals(patients.get(patientUserName).getCommunityName())) {
+                hos.jComboBox1.addItem(set.getValue().getHospitalName());
+            }
+        }
+        hos.show();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

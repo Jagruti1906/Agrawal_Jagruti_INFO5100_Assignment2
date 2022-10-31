@@ -4,6 +4,10 @@
  */
 package Doctors;
 
+import static assignment_2.Assignment_2.encounters;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author jagru
@@ -29,6 +33,8 @@ public class ViewDocEnc extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,6 +63,15 @@ public class ViewDocEnc extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("Add Vitals");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Delete Appointment");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -66,7 +81,11 @@ public class ViewDocEnc extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(94, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(214, 214, 214)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addGap(50, 50, 50)
                 .addComponent(jButton1)
                 .addGap(144, 144, 144))
         );
@@ -76,7 +95,10 @@ public class ViewDocEnc extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
                 .addContainerGap(126, Short.MAX_VALUE))
         );
 
@@ -89,6 +111,44 @@ public class ViewDocEnc extends javax.swing.JFrame {
         DoctorForm doc = new DoctorForm();
         doc.show();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+        CreateEncounter enc = new CreateEncounter();
+        DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+        if(jTable1.getSelectedRowCount() == 1) {
+            int id = Integer.parseInt(tableModel.getValueAt(jTable1.getSelectedRow(), 0).toString());
+            for(int i=0;i<encounters.size();i++) {
+                if(encounters.get(i).getPatientID() == id) {
+                    enc.jTextField1.setText(encounters.get(i).getPatientName());
+                    enc.jTextField1.setEnabled(false);
+                    enc.jTextField2.setText(Integer.toString(encounters.get(i).getPatientID()));
+                    enc.jTextField2.setEnabled(false);
+                    enc.jTextField3.setText(Integer.toString(encounters.get(i).getDoctorID()));
+                    enc.jTextField3.setEnabled(false);
+                    enc.jTextField7.setText(encounters.get(i).getDoctorName());
+                    enc.jTextField7.setEnabled(false);
+                    enc.jTextField8.setText(encounters.get(i).getHospitalName());
+                    enc.jTextField8.setEnabled(false);
+                    enc.jTextField5.setText(Float.toString(encounters.get(i).getBloodPressure()));
+                    enc.jTextField4.setText(Float.toString(encounters.get(i).getTemperature()));
+                    enc.jTextField6.setText(Float.toString(encounters.get(i).getHeartRate()));
+                    enc.jDateChooser1.setDate(encounters.get(i).getDate());
+                    enc.jDateChooser1.setEnabled(false);
+                }
+            }
+            enc.show();
+        }
+        else {
+            if(jTable1.getSelectedRowCount() == 0) {
+                JOptionPane.showMessageDialog(this, "The table is empty or select a row.");
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "Select one row at a time.");
+            }
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,6 +187,8 @@ public class ViewDocEnc extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

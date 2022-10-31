@@ -150,13 +150,17 @@ public class CreateHospital extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.hide();
         int flag = 0;
+        System.out.println(jTextField4.getText());
         HospitalClass hosp = new HospitalClass(Integer.parseInt(jTextField4.getText()),jTextField1.getText(),jComboBox2.getSelectedItem().toString(),Integer.parseInt(jTextField2.getText()), jComboBox1.getSelectedItem().toString());
-        String name = hospitals.get(Integer.parseInt(jTextField4.getText())).getHospitalName();
         if(hospitals.containsKey(Integer.parseInt(jTextField4.getText()))) {
             hospitals.replace(Integer.parseInt(jTextField4.getText()), hosp);
             flag = 1;
         }
+        else {
+            hospitals.put(hosp.getHospitalID(), hosp);
+        }
         if(flag == 1) {
+            String name = hospitals.get(Integer.parseInt(jTextField4.getText())).getHospitalName();
             for (HashMap.Entry<String, DoctorClass> set1 : doctors.entrySet()) {
                 System.out.println(set1.getValue().getHospitalName());
                 if(set1.getValue().getHospitalName().equals(name)) {
@@ -164,7 +168,6 @@ public class CreateHospital extends javax.swing.JFrame {
                 }
             }
         }
-        hospitals.put(hosp.getHospitalID(), hosp);
         system_admin system = new system_admin();
         system.show();
     }//GEN-LAST:event_jButton1ActionPerformed
