@@ -150,7 +150,7 @@ public class DoctorForm extends javax.swing.JFrame {
                 profile.jLabel10.setText(set.getValue().getCity());
                 profile.jLabel8.setText(Integer.toString(set.getValue().getZip()));
                 profile.jLabel4.setText(set.getValue().getHouseName());
-                profile.jLabel8.setText(Integer.toString(set.getValue().getDoctorID()));
+                profile.jLabel18.setText(Integer.toString(set.getValue().getDoctorID()));
             }
         }
         this.hide();
