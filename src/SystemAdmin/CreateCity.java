@@ -6,6 +6,7 @@ package SystemAdmin;
 
 import static assignment_2.Assignment_2.cities;
 import assignment_2.CityClass;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -88,10 +89,18 @@ public class CreateCity extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.hide();
-        CityClass.addCity(jTextField1.getText());
-        system_admin system = new system_admin();
-//        view.jTable1.getColumnModel().getColumn(0).setPreferredWidth(200);
-        system.show();
+        try{
+            if(!jTextField1.getText().matches("[A-Z][a-z]*")) {
+                throw TypeNotPresentException("Incorrect Details");
+            }
+            CityClass.addCity(jTextField1.getText());
+            system_admin system = new system_admin();
+            system.show();
+        }
+        catch(Exception e) {
+            this.show();
+            JOptionPane.showMessageDialog(this, "Insert appropriate details.");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -135,4 +144,8 @@ public class CreateCity extends javax.swing.JFrame {
     public javax.swing.JLabel jLabel2;
     public javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+    private Exception TypeNotPresentException(String incorrect_Details) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

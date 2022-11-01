@@ -11,6 +11,8 @@ import assignment_2.CommunityClass;
 import assignment_2.DoctorClass;
 import assignment_2.HospitalClass;
 import java.util.HashMap;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -149,27 +151,39 @@ public class CreateHospital extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.hide();
-        int flag = 0;
-        System.out.println(jTextField4.getText());
-        HospitalClass hosp = new HospitalClass(Integer.parseInt(jTextField4.getText()),jTextField1.getText(),jComboBox2.getSelectedItem().toString(),Integer.parseInt(jTextField2.getText()), jComboBox1.getSelectedItem().toString());
-        if(hospitals.containsKey(Integer.parseInt(jTextField4.getText()))) {
-            hospitals.replace(Integer.parseInt(jTextField4.getText()), hosp);
-            flag = 1;
-        }
-        else {
-            hospitals.put(hosp.getHospitalID(), hosp);
-        }
-        if(flag == 1) {
-            String name = hospitals.get(Integer.parseInt(jTextField4.getText())).getHospitalName();
-            for (HashMap.Entry<String, DoctorClass> set1 : doctors.entrySet()) {
-                System.out.println(set1.getValue().getHospitalName());
-                if(set1.getValue().getHospitalName().equals(name)) {
-                      doctors.replace(set1.getKey(),new DoctorClass(set1.getValue().getUsername(),set1.getValue().getDoctorID(),set1.getValue().getName(),set1.getValue().getAge(),set1.getValue().getGender(),jTextField1.getText(),set1.getValue().getCommunityName(),set1.getValue().getHouseName(),set1.getValue().getZip(),set1.getValue().getCity()));
+        String regex = "^[0-9]{5}(?:-[0-9]{4})?$";
+        try{
+            if(!jTextField1.getText().matches("[A-Z][a-z]*")) {
+                throw TypeNotPresentException("Incorrect Details");
+            }
+            if(!Pattern.compile(regex).matcher(jTextField2.getText()).matches()) {
+                throw TypeNotPresentException("Incorrect Details");
+            }
+            int flag = 0;
+            HospitalClass hosp = new HospitalClass(Integer.parseInt(jTextField4.getText()),jTextField1.getText(),jComboBox2.getSelectedItem().toString(),Integer.parseInt(jTextField2.getText()), jComboBox1.getSelectedItem().toString());
+            if(hospitals.containsKey(Integer.parseInt(jTextField4.getText()))) {
+                hospitals.replace(Integer.parseInt(jTextField4.getText()), hosp);
+                flag = 1;
+            }
+            else {
+                hospitals.put(hosp.getHospitalID(), hosp);
+            }
+            if(flag == 1) {
+                String name = hospitals.get(Integer.parseInt(jTextField4.getText())).getHospitalName();
+                for (HashMap.Entry<String, DoctorClass> set1 : doctors.entrySet()) {
+                    System.out.println(set1.getValue().getHospitalName());
+                    if(set1.getValue().getHospitalName().equals(name)) {
+                          doctors.replace(set1.getKey(),new DoctorClass(set1.getValue().getUsername(),set1.getValue().getDoctorID(),set1.getValue().getName(),set1.getValue().getAge(),set1.getValue().getGender(),jTextField1.getText(),set1.getValue().getCommunityName(),set1.getValue().getHouseName(),set1.getValue().getZip(),set1.getValue().getCity()));
+                    }
                 }
             }
+            system_admin system = new system_admin();
+            system.show();
         }
-        system_admin system = new system_admin();
-        system.show();
+        catch(Exception e) {
+            this.show();
+            JOptionPane.showMessageDialog(this, "Insert appropriate details.");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -232,4 +246,8 @@ public class CreateHospital extends javax.swing.JFrame {
     public javax.swing.JTextField jTextField2;
     public javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
+
+    private Exception TypeNotPresentException(String incorrect_Details) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

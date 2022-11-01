@@ -9,6 +9,7 @@ import static assignment_2.Assignment_2.encounters;
 import assignment_2.Encounter;
 import java.text.Format;
 import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -207,15 +208,20 @@ public class CreateEncounter extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        this.hide();
-        Encounter enc = new Encounter(jTextField1.getText(), jDateChooser1.getDate(), Integer.parseInt(jTextField2.getText()), Integer.parseInt(jTextField3.getText()), jTextField7.getText(),jTextField8.getText(), Float.parseFloat(jTextField5.getText()), Float.parseFloat(jTextField4.getText()), Float.parseFloat(jTextField6.getText()));
-        for(int i=0;i<encounters.size();i++) {
-            if(encounters.get(i).getPatientID() == Integer.parseInt(jTextField2.getText())) {
-                encounters.set(i,enc);
+        try{
+            this.hide();
+            Encounter enc = new Encounter(jTextField1.getText(), jDateChooser1.getDate(), Integer.parseInt(jTextField2.getText()), Integer.parseInt(jTextField3.getText()), jTextField7.getText(),jTextField8.getText(), Float.parseFloat(jTextField5.getText()), Float.parseFloat(jTextField4.getText()), Float.parseFloat(jTextField6.getText()));
+            for(int i=0;i<encounters.size();i++) {
+                if(encounters.get(i).getPatientID() == Integer.parseInt(jTextField2.getText())) {
+                    encounters.set(i,enc);
+                }
             }
+            DoctorForm doc = new DoctorForm();        
+            doc.show();
         }
-        DoctorForm doc = new DoctorForm();        
-        doc.show();
+        catch(Exception e) {
+            JOptionPane.showMessageDialog(this, "Insert appropriate details.");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

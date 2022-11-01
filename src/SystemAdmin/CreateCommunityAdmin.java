@@ -11,6 +11,8 @@ import assignment_2.CommunityAdmin;
 import assignment_2.CommunityClass;
 import assignment_2.loginClass;
 import java.util.HashMap;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -182,12 +184,25 @@ public class CreateCommunityAdmin extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.hide();
-        loginClass user = new loginClass(jTextField3.getText(), jTextField7.getText(),"Community Admin");
-        users.put(user.getUsername(), user);
-        CommunityAdmin comAdmin = new CommunityAdmin(jTextField3.getText(), jTextField1.getText(), jComboBox3.getSelectedItem().toString(), jComboBox2.getSelectedItem().toString(), Integer.parseInt(jTextField2.getText()), jComboBox1.getSelectedItem().toString());
-        communityAdmins.put(comAdmin.getUsername(), comAdmin);
-        UserFrame userFrame = new UserFrame();
-        userFrame.show();
+        String regex = "^[0-9]{5}(?:-[0-9]{4})?$";
+        try{
+            if(!jTextField1.getText().matches("[A-Z][a-z]*")) {
+                throw TypeNotPresentException("Incorrect Details");
+            }
+            if(!Pattern.compile(regex).matcher(jTextField2.getText()).matches()) {
+                throw TypeNotPresentException("Incorrect Details");
+            }
+            loginClass user = new loginClass(jTextField3.getText(), jTextField7.getText(),"Community Admin");
+            users.put(user.getUsername(), user);
+            CommunityAdmin comAdmin = new CommunityAdmin(jTextField3.getText(), jTextField1.getText(), jComboBox3.getSelectedItem().toString(), jComboBox2.getSelectedItem().toString(), Integer.parseInt(jTextField2.getText()), jComboBox1.getSelectedItem().toString());
+            communityAdmins.put(comAdmin.getUsername(), comAdmin);
+            UserFrame userFrame = new UserFrame();
+            userFrame.show();
+        }
+        catch(Exception e) {
+            this.show();
+            JOptionPane.showMessageDialog(this, "Insert appropriate details.");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -254,4 +269,8 @@ public class CreateCommunityAdmin extends javax.swing.JFrame {
     public javax.swing.JTextField jTextField3;
     public javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables
+
+    private Exception TypeNotPresentException(String incorrect_Details) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

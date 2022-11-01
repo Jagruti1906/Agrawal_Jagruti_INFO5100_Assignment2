@@ -6,6 +6,8 @@ package SystemAdmin;
 
 import static assignment_2.Assignment_2.community;
 import assignment_2.CommunityClass;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -103,10 +105,23 @@ public class CreateCommunity extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.hide();
-        CommunityClass com = new CommunityClass(jTextField1.getText(), Integer.parseInt(jTextField3.getText()), jComboBox1.getSelectedItem().toString());
-        community.put(com.getCommunityName(), com);
-        system_admin system = new system_admin();
-        system.show();
+        String regex = "^[0-9]{5}(?:-[0-9]{4})?$";
+        try{
+            if(!jTextField1.getText().matches("[A-Z][a-z]*")) {
+                throw TypeNotPresentException("Incorrect Details");
+            }
+            if(!Pattern.compile(regex).matcher(jTextField3.getText()).matches()) {
+                throw TypeNotPresentException("Incorrect Details");
+            }
+            CommunityClass com = new CommunityClass(jTextField1.getText(), Integer.parseInt(jTextField3.getText()), jComboBox1.getSelectedItem().toString());
+            community.put(com.getCommunityName(), com);
+            system_admin system = new system_admin();
+            system.show();
+        }
+        catch(Exception e) {
+            this.show();
+            JOptionPane.showMessageDialog(this, "Insert appropriate details.");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -153,4 +168,8 @@ public class CreateCommunity extends javax.swing.JFrame {
     public javax.swing.JTextField jTextField1;
     public javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
+
+    private Exception TypeNotPresentException(String incorrect_Details) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

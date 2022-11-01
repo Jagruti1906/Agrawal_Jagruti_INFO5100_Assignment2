@@ -14,6 +14,8 @@ import assignment_2.DoctorClass;
 import assignment_2.PatientClass;
 import assignment_2.loginClass;
 import java.util.HashMap;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 import views.HomePage;
 import views.login;
 
@@ -226,19 +228,32 @@ public class CreatePatient extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.hide();
-        loginClass user = new loginClass(jTextField3.getText(), jTextField7.getText(),"Patient");
-        PatientClass patient = new PatientClass(jTextField3.getText(),Integer.parseInt(jTextField6.getText()),jTextField1.getText(),Integer.parseInt(jTextField2.getText()), jComboBox4.getSelectedItem().toString(), jComboBox2.getSelectedItem().toString(), jTextField4.getText(), Integer.parseInt(jTextField5.getText()), jComboBox1.getSelectedItem().toString());
-        if(patients.containsKey(jTextField3.getText())) {
-            patients.replace(patient.getUsername(), patient);
-            users.replace(user.getUsername(), user);
-            PatientForm p = new PatientForm();
-            p.show();
+        String regex = "^[0-9]{5}(?:-[0-9]{4})?$";
+        try{
+            if(!jTextField1.getText().matches("[A-Z][a-z]*")) {
+                throw TypeNotPresentException("Incorrect Details");
+            }
+            if(!Pattern.compile(regex).matcher(jTextField5.getText()).matches()) {
+                throw TypeNotPresentException("Incorrect Details");
+            }
+            loginClass user = new loginClass(jTextField3.getText(), jTextField7.getText(),"Patient");
+            PatientClass patient = new PatientClass(jTextField3.getText(),Integer.parseInt(jTextField6.getText()),jTextField1.getText(),Integer.parseInt(jTextField2.getText()), jComboBox4.getSelectedItem().toString(), jComboBox2.getSelectedItem().toString(), jTextField4.getText(), Integer.parseInt(jTextField5.getText()), jComboBox1.getSelectedItem().toString());
+            if(patients.containsKey(jTextField3.getText())) {
+                patients.replace(patient.getUsername(), patient);
+                users.replace(user.getUsername(), user);
+                PatientForm p = new PatientForm();
+                p.show();
+            }
+            else {
+                patients.put(patient.getUsername(), patient);
+                users.put(user.getUsername(), user);
+                HomePage home = new HomePage();
+                home.show();
+            }
         }
-        else {
-            patients.put(patient.getUsername(), patient);
-            users.put(user.getUsername(), user);
-            HomePage home = new HomePage();
-            home.show();
+        catch(Exception e) {
+            this.show();
+            JOptionPane.showMessageDialog(this, "Insert appropriate details.");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -312,4 +327,8 @@ public class CreatePatient extends javax.swing.JFrame {
     public javax.swing.JTextField jTextField6;
     public javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables
+
+    private Exception TypeNotPresentException(String incorrect_Details) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

@@ -9,6 +9,8 @@ import static assignment_2.Assignment_2.houses;
 import assignment_2.CommunityClass;
 import assignment_2.HouseClass;
 import java.util.HashMap;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -140,11 +142,21 @@ public class CreateHouse extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         this.hide();
-        HouseClass house = new HouseClass(jComboBox2.getSelectedItem().toString(), jTextField1.getText(), Integer.parseInt(jTextField2.getText()), jComboBox1.getSelectedItem().toString());
-        houses.put(house.getHouseName(), house);
-        System.out.println(houses.size());
-        system_admin system = new system_admin();
-        system.show();
+        String regex = "^[0-9]{5}(?:-[0-9]{4})?$";
+        try{
+            if(!Pattern.compile(regex).matcher(jTextField2.getText()).matches()) {
+                throw TypeNotPresentException("Incorrect Details");
+            }
+            HouseClass house = new HouseClass(jComboBox2.getSelectedItem().toString(), jTextField1.getText(), Integer.parseInt(jTextField2.getText()), jComboBox1.getSelectedItem().toString());
+            houses.put(house.getHouseName(), house);
+            System.out.println(houses.size());
+            system_admin system = new system_admin();
+            system.show();
+        }
+        catch(Exception e) {
+            this.show();
+            JOptionPane.showMessageDialog(this, "Insert appropriate details.");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -194,4 +206,8 @@ public class CreateHouse extends javax.swing.JFrame {
     public javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
+
+    private Exception TypeNotPresentException(String incorrect_Details) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

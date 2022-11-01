@@ -14,6 +14,7 @@ import assignment_2.Encounter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -133,18 +134,22 @@ public class Hospitals extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.hide();
-//        Date date = new Date();
-//        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM HH:mm");
-        int id=0;
-        for(HashMap.Entry<String, DoctorClass> set : doctors.entrySet()) {
-            if(set.getValue().getName().equals(jComboBox2.getSelectedItem())) {
-                id = set.getValue().getDoctorID();
+        try{
+            int id=0;
+            for(HashMap.Entry<String, DoctorClass> set : doctors.entrySet()) {
+                if(set.getValue().getName().equals(jComboBox2.getSelectedItem())) {
+                    id = set.getValue().getDoctorID();
+                }
             }
+            Encounter enc = new Encounter(patientName, jDateChooser1.getDate(), patients.get(patientUserName).getPatientID(), id, jComboBox2.getSelectedItem().toString(),jComboBox1.getSelectedItem().toString(),0,0,0);
+            encounters.add(enc);
+            PatientForm patient = new PatientForm();
+            patient.show();
         }
-        Encounter enc = new Encounter(patientName, jDateChooser1.getDate(), patients.get(patientUserName).getPatientID(), id, jComboBox2.getSelectedItem().toString(),jComboBox1.getSelectedItem().toString(),0,0,0);
-        encounters.add(enc);
-        PatientForm patient = new PatientForm();
-        patient.show();
+        catch(Exception e) {
+            this.show();
+            JOptionPane.showMessageDialog(this, "Insert appropriate details.");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
